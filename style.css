@@ -1,144 +1,131 @@
-/* Reset and base styling */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
+/* General Styles */
 body {
-  background: #f2f9ff;
-  color: #003c6c;
-  transition: background 0.3s, color 0.3s;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-body.dark-mode {
-  background: #001d33;
-  color: #e0f0ff;
+.dark-mode {
+  background-color: #121212;
+  color: #f4f4f4;
 }
 
 /* Loader */
 #loader {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100vh;
   background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .spinner {
-  width: 50px;
-  height: 50px;
-  border: 6px solid #87cefa;
-  border-top: 6px solid transparent;
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #333;
   border-radius: 50%;
+  width: 60px;
+  height: 60px;
   animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* Navbar */
 .navbar {
-  background: #ffffff;
-  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 10px rgba(0, 60, 108, 0.1);
+  background-color: #6200ea;
+  padding: 1rem 2rem;
+  color: #fff;
   position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: 100;
 }
 
-.navbar .logo {
-  font-size: 1.8rem;
+.logo {
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #007acc;
 }
 
-.navbar nav ul {
+nav ul {
   list-style: none;
   display: flex;
   gap: 1.5rem;
+  align-items: center;
+  padding: 0;
 }
 
-.navbar nav a, #darkModeToggle {
+nav a {
+  color: #fff;
   text-decoration: none;
-  color: #003c6c;
   font-weight: 500;
-  font-size: 1rem;
-  transition: color 0.3s ease;
 }
 
-.navbar nav a:hover, #darkModeToggle:hover {
-  color: #007acc;
+nav a:hover {
+  text-decoration: underline;
 }
 
 /* Hero Section */
 .hero {
-  padding: 4rem 2rem;
   text-align: center;
-  background: linear-gradient(to right, #e6f3ff, #ffffff);
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #6200ea, #3700b3);
+  color: #fff;
 }
 
 .animated-text {
   font-size: 2.5rem;
-  font-weight: bold;
   margin-bottom: 1rem;
-  animation: fadeInDown 1s ease-in-out;
-}
-
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 .btn {
   padding: 0.8rem 1.5rem;
-  margin: 0.5rem;
   border: none;
-  cursor: pointer;
-  font-size: 1rem;
   border-radius: 5px;
-  transition: background 0.3s, transform 0.2s;
+  font-weight: bold;
+  margin: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .btn.primary {
-  background-color: #007acc;
-  color: #fff;
+  background-color: #03dac5;
+  color: #000;
 }
 
 .btn.secondary {
   background-color: transparent;
-  color: #007acc;
-  border: 2px solid #007acc;
+  border: 2px solid #fff;
+  color: #fff;
 }
 
-.btn:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
-}
-
-/* Cards */
+/* Features */
 .features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
   padding: 4rem 2rem;
-  background: #ffffff;
+  background-color: #fafafa;
 }
 
 .card {
-  background: #f0faff;
-  border-radius: 10px;
+  background-color: #fff;
   padding: 2rem;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
-  box-shadow: 0 2px 10px rgba(0, 60, 108, 0.1);
+  border-radius: 10px;
   transition: transform 0.3s;
 }
 
@@ -147,77 +134,91 @@ body.dark-mode {
 }
 
 .card i {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
-  color: #007acc;
+  color: #6200ea;
 }
 
-/* Stats Section */
+/* Testimonials */
+.testimonials {
+  padding: 4rem 2rem;
+  background-color: #eee;
+  text-align: center;
+}
+
+.testimonial {
+  margin: 2rem auto;
+  max-width: 600px;
+  font-style: italic;
+}
+
+/* Stats */
 .stats {
   display: flex;
   justify-content: space-around;
-  background: #e6f3ff;
-  padding: 3rem 2rem;
-  text-align: center;
+  background-color: #6200ea;
+  color: #fff;
+  padding: 3rem 1rem;
 }
 
 .counter h3 {
   font-size: 2rem;
-  color: #003c6c;
+  margin-bottom: 0.5rem;
 }
 
-/* Contact Section */
+/* Contact */
 .contact {
   padding: 4rem 2rem;
-  background: #ffffff;
+  background-color: #fafafa;
   text-align: center;
 }
 
 .contact form {
+  max-width: 500px;
+  margin: auto;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-width: 500px;
-  margin: 0 auto;
 }
 
 .contact input, .contact textarea {
-  padding: 0.8rem;
-  border: 1px solid #b3dfff;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
   border-radius: 5px;
-}
-
-.contact button {
-  background-color: #007acc;
-  color: white;
-  font-weight: bold;
 }
 
 /* Footer */
 footer {
-  background: #003c6c;
-  color: #ffffff;
   text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
+  padding: 2rem 1rem;
+  background-color: #333;
+  color: #fff;
 }
 
-/* Dark Mode */
-.dark-mode .navbar, .dark-mode .features, .dark-mode .contact, .dark-mode footer {
-  background: #001d33;
-  color: #e0f0ff;
+/* Dark Mode Additions */
+.dark-mode .navbar,
+.dark-mode .stats {
+  background-color: #1f1f1f;
 }
 
-.dark-mode .card {
-  background: #003c6c;
-  color: #e0f0ff;
+.dark-mode .features,
+.dark-mode .contact {
+  background-color: #222;
 }
 
-.dark-mode .btn.primary {
-  background-color: #009dff;
+.dark-mode .card,
+.dark-mode .contact form input,
+.dark-mode .contact form textarea {
+  background-color: #333;
+  color: #fff;
+  border-color: #444;
+}
+
+.dark-mode footer {
+  background-color: #000;
 }
 
 .dark-mode .btn.secondary {
-  border-color: #009dff;
-  color: #009dff;
+  border-color: #ccc;
 }

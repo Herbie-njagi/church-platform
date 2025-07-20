@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Bible Quiz</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    const questions = [
+      {
+        q: "What is the first book of the Bible?",
+        a: "Genesis"
+      },
+      {
+        q: "Who built the ark?",
+        a: "Noah"
+      },
+      {
+        q: "Who led the Israelites out of Egypt?",
+        a: "Moses"
+      }
+    ];
+
+    let current = 0;
+
+    function loadQuestion() {
+      document.getElementById("question").textContent = questions[current].q;
+      document.getElementById("answer").value = "";
+      document.getElementById("feedback").textContent = "";
+    }
+
+    function checkAnswer() {
+      const userAnswer = document.getElementById("answer").value.trim().toLowerCase();
+      const correct = questions[current].a.toLowerCase();
+      if (userAnswer === correct) {
+        document.getElementById("feedback").textContent = "✅ Correct!";
+      } else {
+        document.getElementById("feedback").textContent = "❌ Wrong. Try again!";
+      }
+    }
+
+    function nextQuestion() {
+      if (current < questions.length - 1) {
+        current++;
+        loadQuestion();
+      } else {
+        document.getElementById("quiz-box").innerHTML = "<h2>🎉 You've completed the quiz!</h2><a href='certificate.html'>Get Your Certificate</a>";
+      }
+    }
+
+    window.onload = loadQuestion;
+  </script>
+</head>
+<body>
+  <h1>🧠 AI Bible Quiz</h1>
+  <div id="quiz-box">
+    <p id="question"></p>
+    <input type="text" id="answer" placeholder="Your answer here" />
+    <br><br>
+    <button onclick="checkAnswer()">Check Answer</button>
+    <button onclick="nextQuestion()">Next</button>
+    <p id="feedback"></p>
+  </div>
+  <br>
+  <a href="index.html">← Back to Home</a>
+</body>
+</html>

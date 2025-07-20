@@ -1,190 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Church Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      background-color: #f0f4ff;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f8ff;
       color: #333;
     }
-    header {
-      background: linear-gradient(90deg, #003366, #004c99);
-      padding: 20px;
+
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 220px;
+      background: #008CBA;
       color: white;
+      padding: 20px;
+    }
+
+    .sidebar h2 {
       text-align: center;
+      margin-bottom: 30px;
     }
-    h1 {
-      margin: 0;
-      color: gold;
-    }
-    .section {
-      padding: 20px;
-      margin: 20px;
-      background-color: white;
-      border-left: 5px solid #003366;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .section h2 {
-      color: #003366;
-    }
-    .member {
-      margin: 10px 0;
-      padding: 5px 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    .progress-bar {
-      width: 100%;
-      background: #ddd;
-      border-radius: 10px;
-      overflow: hidden;
-      margin-top: 5px;
-    }
-    .progress {
-      height: 15px;
-      background-color: goldenrod;
-      width: 0;
-    }
-    .chat-box {
-      max-height: 200px;
-      overflow-y: auto;
-      margin-top: 10px;
-    }
-    .chat-message {
-      padding: 8px;
-      margin-bottom: 5px;
-      background: #e6f0ff;
-      border-radius: 5px;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 8px;
-      margin-top: 8px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-    button {
-      padding: 10px 20px;
-      background: #004c99;
+
+    .sidebar a {
+      display: block;
+      padding: 12px;
       color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .upload-preview {
-      margin-top: 10px;
-    }
-    .link-buttons a {
-      margin-right: 10px;
-      display: inline-block;
-      background: #0066cc;
-      color: white;
-      padding: 10px;
-      border-radius: 5px;
       text-decoration: none;
+      transition: 0.3s;
     }
-    .link-buttons a:hover {
-      background: #0052a3;
+
+    .sidebar a:hover {
+      background-color: #005f7f;
+      border-radius: 5px;
+    }
+
+    .main {
+      margin-left: 240px;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .btn {
+      background-color: #008CBA;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #0074a2;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .stat-box {
+      background: white;
+      padding: 15px;
+      border-left: 5px solid #008CBA;
+      border-radius: 8px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .stat-box i {
+      font-size: 24px;
+      color: #008CBA;
+      margin-right: 10px;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
+
 <body>
-
-<header>
-  <h1 id="churchName">Welcome to ShachahWave Church</h1>
-  <p>Empowering believers through AI Bible Study & Fellowship</p>
-</header>
-
-<div class="section">
-  <h2>📋 Registered Members</h2>
-  <div id="membersList">
-    <div class="member">John Doe</div>
-    <div class="member">Mary Wanjiku</div>
-    <div class="member">Peter Mwangi</div>
+  <div class="sidebar">
+    <h2><i class="fas fa-church"></i> Dashboard</h2>
+    <a href="#"><i class="fas fa-user"></i> Members</a>
+    <a href="#"><i class="fas fa-book-open"></i> Bible Classes</a>
+    <a href="#"><i class="fas fa-certificate"></i> Certificates</a>
+    <a href="#"><i class="fas fa-comments"></i> Chat</a>
+    <a href="#"><i class="fas fa-upload"></i> Sermons</a>
+    <a href="#"><i class="fas fa-video"></i> Meetings</a>
+    <a href="#"><i class="fas fa-right-from-bracket"></i> Logout</a>
   </div>
-</div>
 
-<div class="section">
-  <h2>📈 Class Progress</h2>
-  <div>
-    <strong>John Doe - Bible Study: 80%</strong>
-    <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
+  <div class="main">
+    <h1>Welcome to <span id="churchName">[Your Church Name]</span></h1>
+
+    <div class="stats">
+      <div class="stat-box">
+        <i class="fas fa-users"></i> <strong>120</strong> Members Registered
+      </div>
+      <div class="stat-box">
+        <i class="fas fa-book"></i> <strong>85%</strong> Average Class Progress
+      </div>
+      <div class="stat-box">
+        <i class="fas fa-cross"></i> <strong>30</strong> Baptisms Completed
+      </div>
+      <div class="stat-box">
+        <i class="fas fa-video"></i> <strong>Zoom + Meet</strong> Connected
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Upload Sermons / Announcements</h3>
+      <input type="file" accept=".mp3, .mp4, .pdf" class="btn" />
+    </div>
+
+    <div class="card">
+      <h3>Church Member Chat</h3>
+      <textarea rows="3" placeholder="Write a message..." style="width: 100%; padding: 10px;"></textarea>
+      <button class="btn" style="margin-top: 10px;"><i class="fas fa-paper-plane"></i> Send</button>
+    </div>
   </div>
-  <div>
-    <strong>Mary Wanjiku - Baptism Class: 60%</strong>
-    <div class="progress-bar"><div class="progress" style="width: 60%;"></div></div>
-  </div>
-  <div>
-    <strong>Peter Mwangi - Bible Study: 40%</strong>
-    <div class="progress-bar"><div class="progress" style="width: 40%;"></div></div>
-  </div>
-</div>
 
-<div class="section">
-  <h2>💬 Church Chat</h2>
-  <div class="chat-box" id="chatBox"></div>
-  <input type="text" id="chatInput" placeholder="Write a message..." />
-  <button onclick="sendMessage()">Send</button>
-</div>
-
-<div class="section">
-  <h2>📢 Sermon/Announcement Upload</h2>
-  <input type="file" id="fileUpload" />
-  <div class="upload-preview" id="uploadPreview"></div>
-</div>
-
-<div class="section">
-  <h2>📞 Join Online Fellowship</h2>
-  <div class="link-buttons">
-    <a href="https://zoom.us" target="_blank">Zoom</a>
-    <a href="https://meet.google.com" target="_blank">Google Meet</a>
-    <a href="https://wa.me/" target="_blank">WhatsApp Group</a>
-  </div>
-</div>
-
-<script>
-  // Simple chat feature using localStorage
-  function sendMessage() {
-    const input = document.getElementById("chatInput");
-    const message = input.value.trim();
-    if (!message) return;
-    const chatBox = document.getElementById("chatBox");
-
-    const chatMessages = JSON.parse(localStorage.getItem("churchChat") || "[]");
-    chatMessages.push(message);
-    localStorage.setItem("churchChat", JSON.stringify(chatMessages));
-
-    const msgDiv = document.createElement("div");
-    msgDiv.className = "chat-message";
-    msgDiv.textContent = message;
-    chatBox.appendChild(msgDiv);
-    input.value = "";
-  }
-
-  // Load chat messages on page load
-  window.onload = function () {
-    const chatMessages = JSON.parse(localStorage.getItem("churchChat") || "[]");
-    const chatBox = document.getElementById("chatBox");
-    chatMessages.forEach(msg => {
-      const msgDiv = document.createElement("div");
-      msgDiv.className = "chat-message";
-      msgDiv.textContent = msg;
-      chatBox.appendChild(msgDiv);
-    });
-
-    // Sermon preview
-    document.getElementById('fileUpload').addEventListener('change', function () {
-      const file = this.files[0];
-      const preview = document.getElementById('uploadPreview');
-      preview.innerHTML = `<strong>Uploaded File:</strong> ${file.name}`;
-    });
-  }
-</script>
-
+  <script>
+    document.getElementById("churchName").innerText = localStorage.getItem("churchName") || "Your Church Name";
+  </script>
 </body>
+
 </html>

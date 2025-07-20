@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Church Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    window.onload = function () {
+      const churchName = localStorage.getItem("churchName") || "Church";
+      document.getElementById("church-name").textContent = churchName;
+
+      const members = JSON.parse(localStorage.getItem("churchMembers")) || [];
+      const list = document.getElementById("member-list");
+      if (members.length === 0) {
+        list.innerHTML = "<p>No members registered yet.</p>";
+      } else {
+        members.forEach(member => {
+          const li = document.createElement("li");
+          li.textContent = `✅ ${member.name} (${member.email})`;
+          list.appendChild(li);
+        });
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem("churchName");
+      window.location.href = "login.html";
+    }
+  </script>
+</head>
+<body>
+  <h1>Welcome, <span id="church-name">Church</span>!</h1>
+
+  <p>This is your dashboard. Here’s what you can do:</p>
+  <ul style="list-style: none; padding: 0;">
+    <li>📖 <a href="quiz.html">Take Bible Quizzes</a></li>
+    <li>📜 <a href="certificate.html">Download Certificate</a></li>
+    <li>🙏 <a href="prayer.html">Submit Prayer Requests</a></li>
+  </ul>
+
+  <h2>📋 Registered Church Members</h2>
+  <ul id="member-list" style="padding-left: 0; list-style: none;"></ul>
+
+  <h2>📡 Online Fellowship Links</h2>
+  <p>
+    <a href="https://zoom.us/" target="_blank">Join Zoom Meeting</a><br>
+    <a href="https://meet.google.com/" target="_blank">Join Google Meet</a><br>
+    <a href="https://wa.me/2547XXXXXXX" target="_blank">Chat on WhatsApp</a>
+  </p>
+
+  <br><br>
+  <button onclick="logout()">🚪 Logout</button><br><br>
+  <a href="index.html">← Back to Home</a>
+</body>
+</html>

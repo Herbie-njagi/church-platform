@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Church AI Platform</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
-
 <body>
   <!-- Loader -->
   <div id="loader">
@@ -18,110 +15,95 @@
 
   <!-- Navbar -->
   <header class="navbar">
-    <h1 class="logo">ChurchAI</h1>
+    <div class="logo">ChurchAI</div>
     <nav>
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="#about">About</a></li>
         <li><a href="#features">Features</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><button id="darkModeToggle">🌙</button></li>
+        <li><button id="toggle-dark" class="btn secondary">Toggle Dark Mode</button></li>
       </ul>
     </nav>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
-    <h2 class="animated-text">Welcome to the Future of Church Learning</h2>
-    <p>Empowering churches with AI-powered Bible study and fellowships.</p>
-    <a href="register.html" class="btn primary">Get Started</a>
-    <a href="login.html" class="btn secondary">Login</a>
+    <h1 class="animated-text">Empowering Churches with AI</h1>
+    <a href="#features" class="btn primary">Explore Features</a>
+    <a href="#contact" class="btn secondary">Get Started</a>
   </section>
 
-  <!-- Features Cards -->
-  <section id="features" class="features">
+  <!-- Features Section -->
+  <section class="features" id="features">
     <div class="card">
-      <i class="fa-solid fa-book-bible"></i>
+      <i class="fas fa-book"></i>
       <h3>AI Bible Study</h3>
-      <p>Interactive Bible study guided by smart quizzes and progress tracking.</p>
+      <p>Use AI to guide interactive Bible study sessions for all members.</p>
     </div>
     <div class="card">
-      <i class="fa-solid fa-users"></i>
-      <h3>Multi-Church Platform</h3>
-      <p>Every church has its own dashboard, members, and progress data.</p>
+      <i class="fas fa-video"></i>
+      <h3>Online Fellowships</h3>
+      <p>Integrate Zoom, Meet & WhatsApp for seamless virtual gatherings.</p>
     </div>
     <div class="card">
-      <i class="fa-solid fa-video"></i>
-      <h3>Zoom & Meet Integration</h3>
-      <p>Join classes and online fellowships directly via integrated video calls.</p>
-    </div>
-    <div class="card">
-      <i class="fa-solid fa-certificate"></i>
+      <i class="fas fa-certificate"></i>
       <h3>Certificates</h3>
-      <p>Receive official baptism or study completion certificates online.</p>
+      <p>Issue certificates for Bible and baptism classes completion.</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-users"></i>
+      <h3>Church Dashboard</h3>
+      <p>Track class progress, announcements, and member engagement.</p>
     </div>
   </section>
 
-  <!-- Testimonials / Stats -->
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <h2>What Churches Say</h2>
+    <p class="testimonial">“ChurchAI has transformed how we do ministry online.” – Pastor John M.</p>
+  </section>
+
+  <!-- Stats Section -->
   <section class="stats">
     <div class="counter">
-      <h3><span class="count" data-target="120">0</span>+</h3>
-      <p>Churches Registered</p>
+      <h3>50+</h3>
+      <p>Churches Onboarded</p>
     </div>
     <div class="counter">
-      <h3><span class="count" data-target="850">0</span>+</h3>
-      <p>Members Enrolled</p>
+      <h3>2000+</h3>
+      <p>Active Members</p>
     </div>
     <div class="counter">
-      <h3><span class="count" data-target="300">0</span>+</h3>
-      <p>Certificates Issued</p>
+      <h3>300+</h3>
+      <p>Classes Completed</p>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="contact">
+  <section class="contact" id="contact">
     <h2>Contact Us</h2>
-    <p>Submit your prayer requests or get in touch for partnership.</p>
-    <form action="#">
-      <input type="text" placeholder="Name">
-      <input type="email" placeholder="Email">
-      <textarea placeholder="Prayer Request or Message"></textarea>
-      <button class="btn primary">Send Message</button>
+    <form>
+      <input type="text" placeholder="Name" required />
+      <input type="email" placeholder="Email" required />
+      <textarea placeholder="Your Message" rows="5"></textarea>
+      <button class="btn primary" type="submit">Send Message</button>
     </form>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 ChurchAI Platform. All rights reserved.</p>
+    <p>&copy; 2025 ChurchAI. All rights reserved.</p>
   </footer>
 
-  <!-- Scripts -->
   <script>
-    // Loader
-    window.addEventListener("load", () => document.getElementById("loader").style.display = "none");
+    window.addEventListener('load', () => {
+      document.getElementById('loader').style.display = 'none';
+    });
 
-    // Dark Mode Toggle
-    document.getElementById("darkModeToggle").onclick = function () {
-      document.body.classList.toggle("dark-mode");
-    };
-
-    // Counter animation
-    document.querySelectorAll('.count').forEach(counter => {
-      const updateCount = () => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
-        const increment = target / 200;
-
-        if (count < target) {
-          counter.innerText = Math.ceil(count + increment);
-          setTimeout(updateCount, 10);
-        } else {
-          counter.innerText = target;
-        }
-      };
-      updateCount();
+    document.getElementById('toggle-dark').addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
     });
   </script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
-
 </html>

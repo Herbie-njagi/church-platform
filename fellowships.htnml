@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fellowships - ChurchConnect</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Fellowships</h1>
+    <p>Connect and engage with your church community online or in person.</p>
+  </header>
+
+  <section class="cards">
+    <div class="card">
+      <h3>Weekly Online Fellowship</h3>
+      <p>Join us every Wednesday at 7PM for our interactive Zoom fellowship.</p>
+      <a href="https://zoom.us" target="_blank"><button>Join via Zoom</button></a>
+    </div>
+
+    <div class="card">
+      <h3>Regional Fellowship Groups</h3>
+      <p>Find a local group near you for monthly meetings and prayer sessions.</p>
+      <a href="groups.html"><button>Find a Group</button></a>
+    </div>
+
+    <div class="card">
+      <h3>Fellowship Calendar</h3>
+      <p>Stay updated with upcoming events, meetings, and joint services.</p>
+      <a href="calendar.html"><button>View Calendar</button></a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 ChurchConnect. United in Fellowship.</p>
+  </footer>
+</body>
+</html>

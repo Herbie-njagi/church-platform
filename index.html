@@ -8,6 +8,163 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #007acc;
+      padding: 1rem 2rem;
+      color: white;
+      flex-wrap: wrap;
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .navbar a,
+    #darkModeToggle {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      background: #0099ff;
+    }
+
+    .navbar a:hover,
+    #darkModeToggle:hover {
+      background: #005f99;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: #e6f2ff;
+    }
+
+    .btn {
+      margin: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .primary {
+      background: #007acc;
+      color: white;
+    }
+
+    .secondary {
+      background: #cceeff;
+      color: #007acc;
+    }
+
+    .primary:hover {
+      background: #005f99;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem 1rem;
+    }
+
+    .card {
+      flex: 1 1 300px;
+      max-width: 300px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card i {
+      font-size: 2.5rem;
+      color: #007acc;
+      margin-bottom: 1rem;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+      background: #e6f2ff;
+      flex-wrap: wrap;
+    }
+
+    .counter {
+      text-align: center;
+    }
+
+    .contact {
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .contact form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact input,
+    .contact textarea {
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    footer {
+      background: #007acc;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .navbar,
+      .features,
+      .stats {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .navbar ul {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 
 <body>

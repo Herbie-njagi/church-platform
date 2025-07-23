@@ -164,4 +164,20 @@ footer {
   .card {
     padding: 1.5rem;
   }
+  .get-started-btn {
+  display: inline-block;
+  background-color: #00aaff;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.get-started-btn:hover {
+  background-color: #0077cc;
+  transform: scale(1.05);
+}
+
 }

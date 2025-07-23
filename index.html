@@ -1,276 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Church AI Platform</title>
+  <title>ChurchConnect - Home</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f8ff;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #007acc;
-      padding: 1rem 2rem;
-      color: white;
-      flex-wrap: wrap;
-    }
-
-    .navbar ul {
-      display: flex;
-      list-style: none;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .navbar a,
-    #darkModeToggle {
-      color: white;
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      background: #0099ff;
-    }
-
-    .navbar a:hover,
-    #darkModeToggle:hover {
-      background: #005f99;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 3rem 1rem;
-      background: #e6f2ff;
-    }
-
-    .btn {
-      margin: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .primary {
-      background: #007acc;
-      color: white;
-    }
-
-    .secondary {
-      background: #cceeff;
-      color: #007acc;
-    }
-
-    .primary:hover {
-      background: #005f99;
-    }
-
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      padding: 2rem 1rem;
-    }
-
-    .card {
-      flex: 1 1 300px;
-      max-width: 300px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      padding: 2rem;
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card i {
-      font-size: 2.5rem;
-      color: #007acc;
-      margin-bottom: 1rem;
-    }
-
-    .stats {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 2rem;
-      background: #e6f2ff;
-      flex-wrap: wrap;
-    }
-
-    .counter {
-      text-align: center;
-    }
-
-    .contact {
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-
-    .contact form {
-      max-width: 500px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .contact input,
-    .contact textarea {
-      padding: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      width: 100%;
-    }
-
-    footer {
-      background: #007acc;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-    }
-
-    @media (max-width: 768px) {
-      .navbar,
-      .features,
-      .stats {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .navbar ul {
-        flex-direction: column;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-
 <body>
-  <!-- Loader -->
-  <div id="loader">
-    <div class="spinner"></div>
-  </div>
+  <div class="loader"></div>
 
-  <!-- Navbar -->
-  <header class="navbar">
-    <h1 class="logo">ChurchAI</h1>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><button id="darkModeToggle">🌙</button></li>
-      </ul>
-    </nav>
-  </header>
+  <nav>
+    <div class="logo">ChurchConnect</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="certificate.html">Certificate</a></li>
+      <li><a href="quiz.html">AI Quiz</a></li>
+      <li><a href="register.html">Register</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+    <button id="dark-mode-toggle"><i class="fas fa-moon"></i></button>
+  </nav>
 
-  <!-- Hero Section -->
   <section class="hero">
-    <h2 class="animated-text">Welcome to the Future of Church Learning</h2>
-    <p>Empowering churches with AI-powered Bible study and fellowships.</p>
-    <a href="register.html" class="btn primary">Get Started</a>
-    <a href="login.html" class="btn secondary">Login</a>
-  </section>
-
-  <!-- Features Cards -->
-  <section id="features" class="features">
-    <div class="card">
-      <i class="fa-solid fa-book-bible"></i>
-      <h3>AI Bible Study</h3>
-      <p>Interactive Bible study guided by smart quizzes and progress tracking.</p>
-    </div>
-    <div class="card">
-      <i class="fa-solid fa-users"></i>
-      <h3>Multi-Church Platform</h3>
-      <p>Every church has its own dashboard, members, and progress data.</p>
-    </div>
-    <div class="card">
-      <i class="fa-solid fa-video"></i>
-      <h3>Zoom & Meet Integration</h3>
-      <p>Join classes and online fellowships directly via integrated video calls.</p>
-    </div>
-    <div class="card">
-      <i class="fa-solid fa-certificate"></i>
-      <h3>Certificates</h3>
-      <p>Receive official baptism or study completion certificates online.</p>
+    <h1>Welcome to ChurchConnect</h1>
+    <p>Empowering churches through AI-driven Bible study and online fellowship</p>
+    <div class="buttons">
+      <a href="register.html" class="btn">Get Started</a>
+      <a href="login.html" class="btn">Login</a>
     </div>
   </section>
 
-  <!-- Testimonials / Stats -->
   <section class="stats">
-    <div class="counter">
-      <h3><span class="count" data-target="120">0</span>+</h3>
+    <div class="stat">
+      <i class="fas fa-church"></i>
+      <p class="count" data-target="300">0</p>
       <p>Churches Registered</p>
     </div>
-    <div class="counter">
-      <h3><span class="count" data-target="850">0</span>+</h3>
+    <div class="stat">
+      <i class="fas fa-users"></i>
+      <p class="count" data-target="1500">0</p>
       <p>Members Enrolled</p>
     </div>
-    <div class="counter">
-      <h3><span class="count" data-target="300">0</span>+</h3>
+    <div class="stat">
+      <i class="fas fa-graduation-cap"></i>
+      <p class="count" data-target="1200">0</p>
       <p>Certificates Issued</p>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <p>Submit your prayer requests or get in touch for partnership.</p>
-    <form action="#">
-      <input type="text" placeholder="Name">
-      <input type="email" placeholder="Email">
-      <textarea placeholder="Prayer Request or Message"></textarea>
-      <button class="btn primary">Send Message</button>
+  <section class="features">
+    <div class="card">
+      <i class="fas fa-book-bible"></i>
+      <h3>AI Bible Study</h3>
+      <p>Personalized and intelligent study guides for every believer.</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-video"></i>
+      <h3>Online Fellowship</h3>
+      <p>Connect via Zoom, Google Meet, or WhatsApp integrated sessions.</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-certificate"></i>
+      <h3>Certification</h3>
+      <p>Get certified after completing classes and tests online.</p>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>Submit Prayer Request</h2>
+    <form action="#" method="post">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Prayer Request" required></textarea>
+      <button type="submit">Submit</button>
     </form>
   </section>
 
-  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 ChurchAI Platform. All rights reserved.</p>
+    &copy; 2025 ChurchConnect. All rights reserved.
   </footer>
 
-  <!-- Scripts -->
   <script>
-    // Loader
-    window.addEventListener("load", () => document.getElementById("loader").style.display = "none");
+    const loader = document.querySelector('.loader');
+    window.addEventListener('load', () => loader.classList.add('hidden'));
 
-    // Dark Mode Toggle
-    document.getElementById("darkModeToggle").onclick = function () {
-      document.body.classList.toggle("dark-mode");
-    };
-
-    // Counter animation
     document.querySelectorAll('.count').forEach(counter => {
+      counter.innerText = '0';
       const updateCount = () => {
         const target = +counter.getAttribute('data-target');
         const count = +counter.innerText;
         const increment = target / 200;
-
         if (count < target) {
-          counter.innerText = Math.ceil(count + increment);
+          counter.innerText = `${Math.ceil(count + increment)}`;
           setTimeout(updateCount, 10);
         } else {
           counter.innerText = target;
@@ -278,7 +101,11 @@
       };
       updateCount();
     });
+
+    const darkToggle = document.getElementById('dark-mode-toggle');
+    darkToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+    });
   </script>
 </body>
-
 </html>

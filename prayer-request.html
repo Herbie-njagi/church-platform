@@ -5,6 +5,100 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prayer Request</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f9ff;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #007BFF;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    header h1 {
+      margin: 0 0 0.5rem;
+    }
+
+    .form-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    form {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 123, 255, 0.1);
+      max-width: 600px;
+      width: 100%;
+    }
+
+    label {
+      font-weight: 600;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.25rem;
+      margin-bottom: 1.25rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      text-align: center;
+      background-color: #eaf4ff;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      form {
+        padding: 1.5rem 1rem;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      input, textarea {
+        font-size: 0.95rem;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -14,14 +108,14 @@
 
   <section class="form-section">
     <form action="#" method="POST">
-      <label for="name">Your Name:</label><br>
-      <input type="text" id="name" name="name" placeholder="Enter your name"><br><br>
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
 
-      <label for="email">Email Address (optional):</label><br>
-      <input type="email" id="email" name="email" placeholder="Enter your email"><br><br>
+      <label for="email">Email Address (optional):</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email">
 
-      <label for="message">Prayer Request:</label><br>
-      <textarea id="message" name="message" rows="6" placeholder="Write your prayer here..."></textarea><br><br>
+      <label for="message">Prayer Request:</label>
+      <textarea id="message" name="message" rows="6" placeholder="Write your prayer here..." required></textarea>
 
       <button type="submit">Submit Prayer</button>
     </form>

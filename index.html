@@ -1,83 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Church Platform - Features</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Church Connect Platform</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
-
-<body class="bg-sky-50 text-gray-800">
-  <header class="bg-white shadow p-4">
-    <h1 class="text-3xl font-bold text-center text-sky-700">Church Connect Platform Features</h1>
+<body>
+  <header class="header">
+    <div class="container nav-container">
+      <h1 class="logo">Church Connect</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="prayer.html">Prayer Requests</a></li>
+          <li><a href="certificate.html">Certificates</a></li>
+          <li><a href="quiz.html">AI Quiz</a></li>
+          <li><a href="register.html" class="btn">Register</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <section class="py-10 px-4 md:px-12 lg:px-20">
-    <div class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-
-      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition duration-300">
-        <h2 class="text-xl font-semibold text-sky-700 mb-2">📖 Smart Bible Study with AI</h2>
-        <p>AI-assisted tools provide scripture explanations, summaries, and intelligent suggestions to guide deeper Bible understanding.</p>
-      </div>
-
-      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition duration-300">
-        <h2 class="text-xl font-semibold text-sky-700 mb-2">🌐 Online Fellowship Integration</h2>
-        <p>Host or join fellowships via Zoom, Google Meet, and WhatsApp. Stay connected with your spiritual family online.</p>
-      </div>
-
-      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition duration-300">
-        <h2 class="text-xl font-semibold text-sky-700 mb-2">📘 Baptism & Discipleship Classes</h2>
-        <p>Enroll in baptism and discipleship lessons with video teachings, assignments, and progress tracking features.</p>
-      </div>
-
-      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition duration-300">
-        <h2 class="text-xl font-semibold text-sky-700 mb-2">🎓 Certificate Issuance</h2>
-        <p>Receive official certificates upon completing Bible study or discipleship programs. Celebrate and share your growth.</p>
-      </div>
-
-      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition duration-300">
-        <h2 class="text-xl font-semibold text-sky-700 mb-2">🛠️ Multi-Church Admin Dashboard</h2>
-        <p>Manage multiple churches and track members, progress, and announcements from one central admin interface.</p>
-      </div>
-
-      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition duration-300">
-        <h2 class="text-xl font-semibold text-sky-700 mb-2">✍️ Online Tests and Assessments</h2>
-        <p>Reinforce lessons with quizzes after each class and get instant feedback to improve retention and understanding.</p>
-      </div>
-
-      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition duration-300">
-        <h2 class="text-xl font-semibold text-sky-700 mb-2">🙏 Prayer Request Portal</h2>
-        <p>Submit and view prayer requests online. Connect with spiritual support when you need it most.</p>
-      </div>
-
-      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition duration-300">
-        <h2 class="text-xl font-semibold text-sky-700 mb-2">👤 Church Member Registration</h2>
-        <p>Each church can register and manage its members, track participation, and provide personalized follow-up.</p>
-      </div>
-
-      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition duration-300">
-        <h2 class="text-xl font-semibold text-sky-700 mb-2">📢 Sermons and Announcements Upload</h2>
-        <p>Upload and share sermons, teachings, and weekly announcements for your entire church community to access.</p>
-      </div>
-
-      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition duration-300">
-        <h2 class="text-xl font-semibold text-sky-700 mb-2">💬 Built-in Chat Feature</h2>
-        <p>Communicate instantly with members and leaders. Share ideas, discuss topics, and encourage one another.</p>
-      </div>
-
+  <section class="hero">
+    <div class="container hero-content">
+      <h2>Welcome to the Future of Church Fellowship</h2>
+      <p>Empowering churches with AI-powered Bible study, online fellowship, and member management.</p>
+      <a href="register.html" class="btn-primary">Get Started</a>
     </div>
   </section>
 
-  <footer class="text-center text-sm text-gray-500 py-4">
-    &copy; 2025 Church Connect Platform. All rights reserved.
+  <section class="features container">
+    <h2>Platform Features</h2>
+    <div class="feature-cards">
+      <div class="card">
+        <i class="fas fa-chalkboard-teacher fa-2x"></i>
+        <h3>Bible Study</h3>
+        <p>Interactive Bible study classes with AI support.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-certificate fa-2x"></i>
+        <h3>Certificates</h3>
+        <p>Get certified after Baptism and Bible classes.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-video fa-2x"></i>
+        <h3>Online Fellowship</h3>
+        <p>Join services via Zoom, Google Meet or WhatsApp.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-praying-hands fa-2x"></i>
+        <h3>Prayer Requests</h3>
+        <p>Submit and receive prayers from the church.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-users fa-2x"></i>
+        <h3>Church Dashboard</h3>
+        <p>Manage church members and monitor class progress.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Church Connect. All rights reserved.</p>
+    </div>
   </footer>
 </body>
-
 </html>

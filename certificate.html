@@ -4,47 +4,80 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Certificate of Completion</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #fefefe;
-    }
-    .certificate-border {
-      border: 10px double #0ea5e9;
-      padding: 3rem;
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #certificate, #certificate * {
+        visibility: visible;
+      }
+      #certificate {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+      button {
+        display: none;
+      }
     }
   </style>
 </head>
-<body class="flex items-center justify-center h-screen p-4 bg-blue-50">
-
-  <div class="bg-white certificate-border w-full max-w-4xl text-center shadow-2xl">
-    <h1 class="text-4xl font-bold text-sky-700 mb-6 uppercase tracking-widest">Certificate of Completion</h1>
-    
-    <p class="text-lg text-gray-700 mb-2">This is to proudly certify that</p>
-    
-    <h2 class="text-3xl font-bold text-gray-900 my-4" style="font-family: 'Great Vibes', cursive;">
-      [Recipient's Full Name]
-    </h2>
-
-    <p class="text-lg text-gray-700 mb-4">has successfully completed the</p>
-
-    <h3 class="text-2xl font-semibold text-sky-600 mb-6">[Course or Program Name]</h3>
-
-    <p class="text-gray-500 italic">"Empowered through knowledge and strengthened in faith"</p>
-
-    <div class="flex justify-between items-center mt-10 px-8">
-      <div>
-        <p class="text-sm text-gray-600">Date</p>
-        <p class="font-semibold text-gray-800">[Date]</p>
+<body class="bg-gray-100 p-4">
+  <div id="certificate" class="max-w-4xl mx-auto bg-white shadow-lg rounded-xl p-10 border-4 border-sky-500">
+    <div class="text-center">
+      <h1 class="text-4xl font-bold text-sky-700 mb-4">Certificate of Completion</h1>
+      <p class="text-xl text-gray-700">This certificate is proudly presented to</p>
+      <h2 id="recipientName" class="text-3xl font-bold text-gray-900 mt-4 mb-2">[Recipient Full Name]</h2>
+      <p class="text-lg text-gray-600 mb-6">for successfully completing the course/program</p>
+      <div class="my-8 text-center">
+        <p class="text-gray-600">Date: <span id="currentDate"></span></p>
+        <p class="text-gray-600">Time: <span id="currentTime"></span></p>
       </div>
+    </div>
+
+    <div class="flex justify-between mt-10 items-center">
       <div>
-        <p class="text-sm text-gray-600">Authorized Signature</p>
-        <p class="font-semibold text-gray-800 border-t-2 border-gray-400 inline-block mt-2">[Signature]</p>
+        <p class="text-gray-600">Admin</p>
+        <p id="adminName" class="text-lg font-semibold text-gray-800">[Admin Name]</p>
+      </div>
+      <div class="text-center">
+        <p class="text-gray-600">Signature</p>
+        <div class="border-b-2 border-gray-400 w-40 mx-auto mt-2">
+          <input
+            type="text"
+            placeholder="Signature"
+            class="w-full text-center bg-transparent focus:outline-none"
+          />
+        </div>
       </div>
     </div>
   </div>
 
+  <div class="text-center mt-6">
+    <button onclick="window.print()" class="bg-sky-700 text-white px-6 py-2 rounded hover:bg-sky-800 transition">
+      Download / Print Certificate
+    </button>
+  </div>
+
+  <script>
+    // Simulate registered user info
+    const registeredUser = {
+      fullName: "Herbert Njagi", // replace with dynamic user data
+      admin: "Pastor John Doe"
+    };
+
+    // Set values dynamically
+    document.getElementById("recipientName").textContent = registeredUser.fullName;
+    document.getElementById("adminName").textContent = registeredUser.admin;
+
+    // Set date and time
+    const now = new Date();
+    const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById("currentDate").textContent = now.toLocaleDateString(undefined, dateOptions);
+    document.getElementById("currentTime").textContent = now.toLocaleTimeString();
+  </script>
 </body>
 </html>

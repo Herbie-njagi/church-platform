@@ -1,160 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Church Dashboard</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f0f8ff;
-      color: #333;
-    }
-
-    .sidebar {
-      position: fixed;
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 220px;
-      background: #008CBA;
-      color: white;
-      padding: 20px;
-    }
-
-    .sidebar h2 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .sidebar a {
-      display: block;
-      padding: 12px;
-      color: white;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .sidebar a:hover {
-      background-color: #005f7f;
-      border-radius: 5px;
-    }
-
-    .main {
-      margin-left: 240px;
-      padding: 20px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .card h3 {
-      margin-top: 0;
-    }
-
-    .btn {
-      background-color: #008CBA;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn:hover {
-      background-color: #0074a2;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    .stat-box {
-      background: white;
-      padding: 15px;
-      border-left: 5px solid #008CBA;
-      border-radius: 8px;
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
-    }
-
-    .stat-box i {
-      font-size: 24px;
-      color: #008CBA;
-      margin-right: 10px;
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(10px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+  <title>Church Connect Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
-<body>
-  <div class="sidebar">
-    <h2><i class="fas fa-church"></i> Dashboard</h2>
-    <a href="#"><i class="fas fa-user"></i> Members</a>
-    <a href="#"><i class="fas fa-book-open"></i> Bible Classes</a>
-    <a href="#"><i class="fas fa-certificate"></i> Certificates</a>
-    <a href="#"><i class="fas fa-comments"></i> Chat</a>
-    <a href="#"><i class="fas fa-upload"></i> Sermons</a>
-    <a href="#"><i class="fas fa-video"></i> Meetings</a>
-    <a href="#"><i class="fas fa-right-from-bracket"></i> Logout</a>
-  </div>
-
-  <div class="main">
-    <h1>Welcome to <span id="churchName">[Your Church Name]</span></h1>
-
-    <div class="stats">
-      <div class="stat-box">
-        <i class="fas fa-users"></i> <strong>120</strong> Members Registered
-      </div>
-      <div class="stat-box">
-        <i class="fas fa-book"></i> <strong>85%</strong> Average Class Progress
-      </div>
-      <div class="stat-box">
-        <i class="fas fa-cross"></i> <strong>30</strong> Baptisms Completed
-      </div>
-      <div class="stat-box">
-        <i class="fas fa-video"></i> <strong>Zoom + Meet</strong> Connected
-      </div>
+<body class="bg-gray-100 min-h-screen">
+  <div class="flex">
+    <!-- Sidebar -->
+    <div class="w-64 bg-blue-900 text-white min-h-screen p-5">
+      <h2 class="text-2xl font-bold mb-6">Church Dashboard</h2>
+      <ul class="space-y-4">
+        <li><button onclick="showSection('members')" class="hover:underline">Registered Members</button></li>
+        <li><button onclick="showSection('bibleClasses')" class="hover:underline">Bible Classes</button></li>
+        <li><button onclick="showSection('certificates')" class="hover:underline">Certificates</button></li>
+        <li><button onclick="showSection('chats')" class="hover:underline">Public Chats</button></li>
+        <li><button onclick="showSection('sermons')" class="hover:underline">Sermons</button></li>
+        <li><button onclick="showSection('meetings')" class="hover:underline">Meetings</button></li>
+      </ul>
     </div>
 
-    <div class="card">
-      <h3>Upload Sermons / Announcements</h3>
-      <input type="file" accept=".mp3, .mp4, .pdf" class="btn" />
-    </div>
+    <!-- Main Content -->
+    <div class="flex-1 p-10" id="mainContent">
+      <!-- Registered Members -->
+      <section id="members" class="hidden">
+        <h2 class="text-2xl font-bold mb-4">Registered Members</h2>
+        <ul class="list-disc ml-6">
+          <li>Herbert Njagi</li>
+          <li>Grace Wanjiru</li>
+          <li>John Kamau</li>
+          <!-- Add dynamically from database -->
+        </ul>
+      </section>
 
-    <div class="card">
-      <h3>Church Member Chat</h3>
-      <textarea rows="3" placeholder="Write a message..." style="width: 100%; padding: 10px;"></textarea>
-      <button class="btn" style="margin-top: 10px;"><i class="fas fa-paper-plane"></i> Send</button>
+      <!-- Bible Classes -->
+      <section id="bibleClasses" class="hidden">
+        <h2 class="text-2xl font-bold mb-4">Bible Classes (Genesis to Revelation)</h2>
+        <ol class="list-decimal ml-6">
+          <li>Genesis</li>
+          <li>Exodus</li>
+          <li>Leviticus</li>
+          <!-- Continue all the way to Revelation -->
+          <li>Revelation</li>
+        </ol>
+      </section>
+
+      <!-- Certificates -->
+      <section id="certificates" class="hidden">
+        <h2 class="text-2xl font-bold mb-4">Issued Certificates</h2>
+        <ul class="list-disc ml-6">
+          <li>Herbert Njagi - Discipleship Class</li>
+          <li>Grace Wanjiru - Bible Study</li>
+          <!-- Dynamic list -->
+        </ul>
+      </section>
+
+      <!-- Public Chats -->
+      <section id="chats" class="hidden">
+        <h2 class="text-2xl font-bold mb-4">Public Chats</h2>
+        <div class="bg-white p-4 border rounded max-h-96 overflow-y-auto">
+          <p><strong>Herbert:</strong> Welcome everyone to today’s class!</p>
+          <p><strong>Grace:</strong> Amen! So glad to be here 🙌</p>
+          <!-- More chats here -->
+        </div>
+      </section>
+
+      <!-- Sermons -->
+      <section id="sermons" class="hidden">
+        <h2 class="text-2xl font-bold mb-4">Sermons (YouTube)</h2>
+        <div class="space-y-6">
+          <div>
+            <h3 class="font-semibold">Faith in Storms</h3>
+            <iframe class="w-full h-64" src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <!-- Add more videos dynamically -->
+        </div>
+      </section>
+
+      <!-- Meetings -->
+      <section id="meetings" class="hidden">
+        <h2 class="text-2xl font-bold mb-4">Join Our Meetings</h2>
+        <ul class="list-disc ml-6">
+          <li><a href="https://meet.google.com/your-meeting-link" class="text-blue-600 hover:underline">Google Meet - Discipleship</a></li>
+          <li><a href="https://zoom.us/your-meeting-link" class="text-blue-600 hover:underline">Zoom - Bible Class</a></li>
+        </ul>
+      </section>
     </div>
   </div>
 
   <script>
-    document.getElementById("churchName").innerText = localStorage.getItem("churchName") || "Your Church Name";
+    function showSection(id) {
+      const sections = document.querySelectorAll('#mainContent section');
+      sections.forEach(sec => sec.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+    }
   </script>
 </body>
-
 </html>

@@ -1,107 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ChurchConnect Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Church Connect Platform</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <nav>
-    <div class="logo">ChurchConnect</div>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#programs">Programs</a></li>
-      <li><a href="#fellowships">Fellowships</a></li>
-      <li><a href="#bible-study">Bible Study</a></li>
-      <li><a href="#sermons">Sermons</a></li>
-      <li><a href="#announcements">Announcements</a></li>
-      <li><a href="#members">Members</a></li>
-      <li><a href="#prayer">Prayer Requests</a></li>
-      <li><a href="#classes">Classes</a></li>
-      <li><a href="#logout" onclick="logout()">Logout</a></li>
-    </ul>
-  </nav>
-
-  <section id="home" class="hero">
-    <h1>Welcome to Your Dashboard</h1>
-    <p>This is your centralized church platform for discipleship, fellowships, sermons, and more.</p>
-  </section>
-
-  <section id="programs" class="cards">
-    <div class="card">
-      <h3>Discipleship Program</h3>
-      <p>Enroll, track, and complete discipleship classes with certification.</p>
-      <a href="discipleship.html"><button>Open</button></a>
+  <header class="header">
+    <div class="container nav-container">
+      <h1 class="logo">Church Connect</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="prayer.html">Prayer Requests</a></li>
+          <li><a href="certificate.html">Certificates</a></li>
+          <li><a href="quiz.html">AI Quiz</a></li>
+          <li><a href="register.html" class="btn">Register</a></li>
+        </ul>
+      </nav>
     </div>
-    <div class="card">
-      <h3>Bible Study Modules</h3>
-      <p>Join Bible study classes and grow spiritually with guided teachings.</p>
-      <a href="bible-study.html"><button>Open</button></a>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-content">
+      <h2>Welcome to the Future of Church Fellowship</h2>
+      <p>Empowering churches with AI-powered Bible study, online fellowship, and member management.</p>
+      <a href="register.html" class="btn-primary">Get Started</a>
     </div>
   </section>
 
-  <section id="fellowships" class="cards">
-    <div class="card">
-      <h3>Online Fellowships</h3>
-      <p>Join virtual gatherings and connect with fellow believers in real-time.</p>
-      <a href="fellowships.html"><button>Join</button></a>
-    </div>
-    <div class="card">
-      <h3>Baptism Classes</h3>
-      <p>Prepare for baptism by completing foundational teachings.</p>
-      <a href="baptism.html"><button>Start</button></a>
-    </div>
-  </section>
-
-  <section id="sermons" class="cards">
-    <div class="card">
-      <h3>Sermons</h3>
-      <p>Watch uploaded sermons or share new ones for the church community.</p>
-      <a href="sermons.html"><button>View</button></a>
-    </div>
-    <div class="card">
-      <h3>Announcements</h3>
-      <p>Post or view announcements from your church leaders.</p>
-      <a href="announcements.html"><button>Check</button></a>
-    </div>
-  </section>
-
-  <section id="members" class="cards">
-    <div class="card">
-      <h3>Members List</h3>
-      <p>See who is registered under your church.</p>
-      <a href="members.html"><button>View</button></a>
-    </div>
-    <div class="card">
-      <h3>Prayer Requests</h3>
-      <p>Submit and pray for needs within your community.</p>
-      <a href="prayer.html"><button>Submit</button></a>
+  <section class="features container">
+    <h2>Platform Features</h2>
+    <div class="feature-cards">
+      <div class="card">
+        <i class="fas fa-chalkboard-teacher fa-2x"></i>
+        <h3>Bible Study</h3>
+        <p>Interactive Bible study classes with AI support.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-certificate fa-2x"></i>
+        <h3>Certificates</h3>
+        <p>Get certified after Baptism and Bible classes.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-video fa-2x"></i>
+        <h3>Online Fellowship</h3>
+        <p>Join services via Zoom, Google Meet or WhatsApp.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-praying-hands fa-2x"></i>
+        <h3>Prayer Requests</h3>
+        <p>Submit and receive prayers from the church.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-users fa-2x"></i>
+        <h3>Church Dashboard</h3>
+        <p>Manage church members and monitor class progress.</p>
+      </div>
     </div>
   </section>
 
-  <section id="classes" class="cards">
-    <div class="card">
-      <h3>Class Progress</h3>
-      <p>Track your Bible study and discipleship progress.</p>
-      <a href="progress.html"><button>Track</button></a>
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Church Connect. All rights reserved.</p>
     </div>
-    <div class="card">
-      <h3>Online Tests</h3>
-      <p>Take assessments after classes and receive instant results.</p>
-      <a href="tests.html"><button>Take Test</button></a>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 ChurchConnect. Empowering Faith Through Technology.</p>
   </footer>
-
-  <script>
-    function logout() {
-      localStorage.removeItem('user');
-      window.location.href = 'login.html';
-    }
-  </script>
 </body>
 </html>

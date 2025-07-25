@@ -5,42 +5,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Church Connect Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          animation: {
+            fadeInUp: 'fadeInUp 0.6s ease-out',
+            bounceIn: 'bounceIn 0.8s ease-out',
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            bounceIn: {
+              '0%': { transform: 'scale(0.9)' },
+              '50%': { transform: 'scale(1.05)' },
+              '100%': { transform: 'scale(1)' },
+            },
+          },
+        },
+      },
+    };
+  </script>
 </head>
-<body class="bg-gray-100 min-h-screen font-sans">
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans">
   <div class="flex">
     <!-- Sidebar -->
-    <aside class="w-64 bg-blue-900 text-white min-h-screen p-6">
-      <h2 class="text-3xl font-extrabold mb-8">Church Dashboard</h2>
-      <nav class="space-y-3">
-        <button onclick="showSection('members')" class="block w-full text-left px-4 py-2 hover:bg-blue-700 rounded">📋 Members</button>
-        <button onclick="showSection('bibleClasses')" class="block w-full text-left px-4 py-2 hover:bg-blue-700 rounded">📖 Bible Classes</button>
-        <button onclick="showSection('certificates')" class="block w-full text-left px-4 py-2 hover:bg-blue-700 rounded">🎓 Certificates</button>
-        <button onclick="showSection('chats')" class="block w-full text-left px-4 py-2 hover:bg-blue-700 rounded">💬 Public Chats</button>
-        <button onclick="showSection('sermons')" class="block w-full text-left px-4 py-2 hover:bg-blue-700 rounded">📺 Sermons</button>
-        <button onclick="showSection('meetings')" class="block w-full text-left px-4 py-2 hover:bg-blue-700 rounded">📅 Meetings</button>
-      </nav>
-    </aside>
+    <div class="w-64 bg-blue-900 text-white min-h-screen p-5 shadow-2xl">
+      <h2 class="text-2xl font-extrabold mb-8 tracking-wide">Church Dashboard</h2>
+      <ul class="space-y-4">
+        <li><button onclick="showSection('members')" class="hover:text-yellow-300 transition">Registered Members</button></li>
+        <li><button onclick="showSection('bibleClasses')" class="hover:text-yellow-300 transition">Bible Classes</button></li>
+        <li><button onclick="showSection('certificates')" class="hover:text-yellow-300 transition">Certificates</button></li>
+        <li><button onclick="showSection('chats')" class="hover:text-yellow-300 transition">Public Chats</button></li>
+        <li><button onclick="showSection('sermons')" class="hover:text-yellow-300 transition">Sermons</button></li>
+        <li><button onclick="showSection('meetings')" class="hover:text-yellow-300 transition">Meetings</button></li>
+      </ul>
+    </div>
 
     <!-- Main Content -->
-    <main class="flex-1 p-10 transition-all duration-300" id="mainContent">
-      
-      <!-- Section: Registered Members -->
-      <section id="members" class="hidden">
-        <div class="bg-white p-6 rounded shadow">
-          <h2 class="text-2xl font-semibold mb-4">Registered Members</h2>
-          <ul class="list-disc ml-6 space-y-1 text-gray-700">
-            <li>Herbert Njagi</li>
-            <li>Grace Wanjiru</li>
-            <li>John Kamau</li>
-          </ul>
+    <div class="flex-1 p-10 space-y-10" id="mainContent">
+      <!-- Registered Members -->
+      <section id="members" class="hidden animate-fadeInUp">
+        <h2 class="text-3xl font-bold text-blue-800 mb-6">Registered Members</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white shadow-lg rounded-xl p-6 hover:shadow-xl transition transform hover:scale-105">
+            <h3 class="font-semibold text-lg text-gray-700">Herbert Njagi</h3>
+          </div>
+          <div class="bg-white shadow-lg rounded-xl p-6 hover:shadow-xl transition transform hover:scale-105">
+            <h3 class="font-semibold text-lg text-gray-700">Grace Wanjiru</h3>
+          </div>
+          <div class="bg-white shadow-lg rounded-xl p-6 hover:shadow-xl transition transform hover:scale-105">
+            <h3 class="font-semibold text-lg text-gray-700">John Kamau</h3>
+          </div>
         </div>
       </section>
 
-      <!-- Section: Bible Classes -->
-      <section id="bibleClasses" class="hidden">
-        <div class="bg-white p-6 rounded shadow">
-          <h2 class="text-2xl font-semibold mb-4">Bible Classes (Genesis to Revelation)</h2>
-          <ol class="list-decimal ml-6 space-y-1 text-gray-700">
+      <!-- Bible Classes -->
+      <section id="bibleClasses" class="hidden animate-fadeInUp">
+        <h2 class="text-3xl font-bold text-blue-800 mb-6">Bible Classes (Genesis to Revelation)</h2>
+        <div class="bg-white shadow-lg rounded-xl p-6">
+          <ol class="list-decimal ml-6 space-y-2 text-gray-700">
             <li>Genesis</li>
             <li>Exodus</li>
             <li>Leviticus</li>
@@ -49,66 +75,56 @@
         </div>
       </section>
 
-      <!-- Section: Certificates -->
-      <section id="certificates" class="hidden">
-        <div class="bg-white p-6 rounded shadow">
-          <h2 class="text-2xl font-semibold mb-4">Issued Certificates</h2>
-          <ul class="list-disc ml-6 space-y-1 text-gray-700">
+      <!-- Certificates -->
+      <section id="certificates" class="hidden animate-fadeInUp">
+        <h2 class="text-3xl font-bold text-blue-800 mb-6">Issued Certificates</h2>
+        <div class="bg-white shadow-lg rounded-xl p-6">
+          <ul class="list-disc ml-6 space-y-2 text-gray-700">
             <li>Herbert Njagi - Discipleship Class</li>
             <li>Grace Wanjiru - Bible Study</li>
           </ul>
         </div>
       </section>
 
-      <!-- Section: Chats -->
-      <section id="chats" class="hidden">
-        <div class="bg-white p-6 rounded shadow max-h-[400px] overflow-y-auto">
-          <h2 class="text-2xl font-semibold mb-4">Public Chats</h2>
-          <div class="space-y-2">
-            <p><strong>Herbert:</strong> Welcome everyone to today’s class!</p>
-            <p><strong>Grace:</strong> Amen! So glad to be here 🙌</p>
+      <!-- Public Chats -->
+      <section id="chats" class="hidden animate-fadeInUp">
+        <h2 class="text-3xl font-bold text-blue-800 mb-6">Public Chats</h2>
+        <div class="bg-white p-6 shadow-lg rounded-xl max-h-96 overflow-y-auto space-y-2">
+          <p><strong class="text-blue-900">Herbert:</strong> Welcome everyone to today’s class!</p>
+          <p><strong class="text-blue-900">Grace:</strong> Amen! So glad to be here 🙌</p>
+        </div>
+      </section>
+
+      <!-- Sermons -->
+      <section id="sermons" class="hidden animate-fadeInUp">
+        <h2 class="text-3xl font-bold text-blue-800 mb-6">Sermons (YouTube)</h2>
+        <div class="space-y-6">
+          <div class="bg-white shadow-lg rounded-xl p-6">
+            <h3 class="font-semibold text-lg mb-4 text-gray-700">Faith in Storms</h3>
+            <iframe class="w-full h-64 rounded-xl" src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
           </div>
         </div>
       </section>
 
-      <!-- Section: Sermons -->
-      <section id="sermons" class="hidden">
-        <div class="bg-white p-6 rounded shadow">
-          <h2 class="text-2xl font-semibold mb-4">Sermons (YouTube)</h2>
-          <div class="space-y-6">
-            <div>
-              <h3 class="font-semibold text-lg">Faith in Storms</h3>
-              <iframe class="w-full h-64 rounded" src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Section: Meetings -->
-      <section id="meetings" class="hidden">
-        <div class="bg-white p-6 rounded shadow">
-          <h2 class="text-2xl font-semibold mb-4">Join Our Meetings</h2>
-          <ul class="list-disc ml-6 space-y-1 text-blue-700">
-            <li><a href="https://meet.google.com/your-meeting-link" class="hover:underline">Google Meet - Discipleship</a></li>
-            <li><a href="https://zoom.us/your-meeting-link" class="hover:underline">Zoom - Bible Class</a></li>
+      <!-- Meetings -->
+      <section id="meetings" class="hidden animate-fadeInUp">
+        <h2 class="text-3xl font-bold text-blue-800 mb-6">Join Our Meetings</h2>
+        <div class="bg-white shadow-lg rounded-xl p-6">
+          <ul class="list-disc ml-6 space-y-2 text-gray-700">
+            <li><a href="https://meet.google.com/your-meeting-link" class="text-blue-600 hover:underline">Google Meet - Discipleship</a></li>
+            <li><a href="https://zoom.us/your-meeting-link" class="text-blue-600 hover:underline">Zoom - Bible Class</a></li>
           </ul>
         </div>
       </section>
-
-    </main>
+    </div>
   </div>
 
-  <!-- Script for Section Navigation -->
   <script>
     function showSection(id) {
-      document.querySelectorAll('#mainContent section').forEach(section => {
-        section.classList.add('hidden');
-      });
+      const sections = document.querySelectorAll('#mainContent section');
+      sections.forEach(sec => sec.classList.add('hidden'));
       document.getElementById(id).classList.remove('hidden');
     }
-
-    // Show the first section by default
-    window.onload = () => showSection('members');
   </script>
 </body>
 </html>

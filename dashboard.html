@@ -6,95 +6,109 @@
   <title>Church Connect Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 min-h-screen">
+<body class="bg-gray-100 min-h-screen font-sans">
   <div class="flex">
     <!-- Sidebar -->
-    <div class="w-64 bg-blue-900 text-white min-h-screen p-5">
-      <h2 class="text-2xl font-bold mb-6">Church Dashboard</h2>
-      <ul class="space-y-4">
-        <li><button onclick="showSection('members')" class="hover:underline">Registered Members</button></li>
-        <li><button onclick="showSection('bibleClasses')" class="hover:underline">Bible Classes</button></li>
-        <li><button onclick="showSection('certificates')" class="hover:underline">Certificates</button></li>
-        <li><button onclick="showSection('chats')" class="hover:underline">Public Chats</button></li>
-        <li><button onclick="showSection('sermons')" class="hover:underline">Sermons</button></li>
-        <li><button onclick="showSection('meetings')" class="hover:underline">Meetings</button></li>
-      </ul>
-    </div>
+    <aside class="w-64 bg-blue-900 text-white min-h-screen p-6">
+      <h2 class="text-3xl font-extrabold mb-8">Church Dashboard</h2>
+      <nav class="space-y-3">
+        <button onclick="showSection('members')" class="block w-full text-left px-4 py-2 hover:bg-blue-700 rounded">📋 Members</button>
+        <button onclick="showSection('bibleClasses')" class="block w-full text-left px-4 py-2 hover:bg-blue-700 rounded">📖 Bible Classes</button>
+        <button onclick="showSection('certificates')" class="block w-full text-left px-4 py-2 hover:bg-blue-700 rounded">🎓 Certificates</button>
+        <button onclick="showSection('chats')" class="block w-full text-left px-4 py-2 hover:bg-blue-700 rounded">💬 Public Chats</button>
+        <button onclick="showSection('sermons')" class="block w-full text-left px-4 py-2 hover:bg-blue-700 rounded">📺 Sermons</button>
+        <button onclick="showSection('meetings')" class="block w-full text-left px-4 py-2 hover:bg-blue-700 rounded">📅 Meetings</button>
+      </nav>
+    </aside>
 
     <!-- Main Content -->
-    <div class="flex-1 p-10" id="mainContent">
-      <!-- Registered Members -->
+    <main class="flex-1 p-10 transition-all duration-300" id="mainContent">
+      
+      <!-- Section: Registered Members -->
       <section id="members" class="hidden">
-        <h2 class="text-2xl font-bold mb-4">Registered Members</h2>
-        <ul class="list-disc ml-6">
-          <li>Herbert Njagi</li>
-          <li>Grace Wanjiru</li>
-          <li>John Kamau</li>
-          <!-- Add dynamically from database -->
-        </ul>
+        <div class="bg-white p-6 rounded shadow">
+          <h2 class="text-2xl font-semibold mb-4">Registered Members</h2>
+          <ul class="list-disc ml-6 space-y-1 text-gray-700">
+            <li>Herbert Njagi</li>
+            <li>Grace Wanjiru</li>
+            <li>John Kamau</li>
+          </ul>
+        </div>
       </section>
 
-      <!-- Bible Classes -->
+      <!-- Section: Bible Classes -->
       <section id="bibleClasses" class="hidden">
-        <h2 class="text-2xl font-bold mb-4">Bible Classes (Genesis to Revelation)</h2>
-        <ol class="list-decimal ml-6">
-          <li>Genesis</li>
-          <li>Exodus</li>
-          <li>Leviticus</li>
-          <!-- Continue all the way to Revelation -->
-          <li>Revelation</li>
-        </ol>
+        <div class="bg-white p-6 rounded shadow">
+          <h2 class="text-2xl font-semibold mb-4">Bible Classes (Genesis to Revelation)</h2>
+          <ol class="list-decimal ml-6 space-y-1 text-gray-700">
+            <li>Genesis</li>
+            <li>Exodus</li>
+            <li>Leviticus</li>
+            <li>Revelation</li>
+          </ol>
+        </div>
       </section>
 
-      <!-- Certificates -->
+      <!-- Section: Certificates -->
       <section id="certificates" class="hidden">
-        <h2 class="text-2xl font-bold mb-4">Issued Certificates</h2>
-        <ul class="list-disc ml-6">
-          <li>Herbert Njagi - Discipleship Class</li>
-          <li>Grace Wanjiru - Bible Study</li>
-          <!-- Dynamic list -->
-        </ul>
+        <div class="bg-white p-6 rounded shadow">
+          <h2 class="text-2xl font-semibold mb-4">Issued Certificates</h2>
+          <ul class="list-disc ml-6 space-y-1 text-gray-700">
+            <li>Herbert Njagi - Discipleship Class</li>
+            <li>Grace Wanjiru - Bible Study</li>
+          </ul>
+        </div>
       </section>
 
-      <!-- Public Chats -->
+      <!-- Section: Chats -->
       <section id="chats" class="hidden">
-        <h2 class="text-2xl font-bold mb-4">Public Chats</h2>
-        <div class="bg-white p-4 border rounded max-h-96 overflow-y-auto">
-          <p><strong>Herbert:</strong> Welcome everyone to today’s class!</p>
-          <p><strong>Grace:</strong> Amen! So glad to be here 🙌</p>
-          <!-- More chats here -->
-        </div>
-      </section>
-
-      <!-- Sermons -->
-      <section id="sermons" class="hidden">
-        <h2 class="text-2xl font-bold mb-4">Sermons (YouTube)</h2>
-        <div class="space-y-6">
-          <div>
-            <h3 class="font-semibold">Faith in Storms</h3>
-            <iframe class="w-full h-64" src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+        <div class="bg-white p-6 rounded shadow max-h-[400px] overflow-y-auto">
+          <h2 class="text-2xl font-semibold mb-4">Public Chats</h2>
+          <div class="space-y-2">
+            <p><strong>Herbert:</strong> Welcome everyone to today’s class!</p>
+            <p><strong>Grace:</strong> Amen! So glad to be here 🙌</p>
           </div>
-          <!-- Add more videos dynamically -->
         </div>
       </section>
 
-      <!-- Meetings -->
-      <section id="meetings" class="hidden">
-        <h2 class="text-2xl font-bold mb-4">Join Our Meetings</h2>
-        <ul class="list-disc ml-6">
-          <li><a href="https://meet.google.com/your-meeting-link" class="text-blue-600 hover:underline">Google Meet - Discipleship</a></li>
-          <li><a href="https://zoom.us/your-meeting-link" class="text-blue-600 hover:underline">Zoom - Bible Class</a></li>
-        </ul>
+      <!-- Section: Sermons -->
+      <section id="sermons" class="hidden">
+        <div class="bg-white p-6 rounded shadow">
+          <h2 class="text-2xl font-semibold mb-4">Sermons (YouTube)</h2>
+          <div class="space-y-6">
+            <div>
+              <h3 class="font-semibold text-lg">Faith in Storms</h3>
+              <iframe class="w-full h-64 rounded" src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
       </section>
-    </div>
+
+      <!-- Section: Meetings -->
+      <section id="meetings" class="hidden">
+        <div class="bg-white p-6 rounded shadow">
+          <h2 class="text-2xl font-semibold mb-4">Join Our Meetings</h2>
+          <ul class="list-disc ml-6 space-y-1 text-blue-700">
+            <li><a href="https://meet.google.com/your-meeting-link" class="hover:underline">Google Meet - Discipleship</a></li>
+            <li><a href="https://zoom.us/your-meeting-link" class="hover:underline">Zoom - Bible Class</a></li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
   </div>
 
+  <!-- Script for Section Navigation -->
   <script>
     function showSection(id) {
-      const sections = document.querySelectorAll('#mainContent section');
-      sections.forEach(sec => sec.classList.add('hidden'));
+      document.querySelectorAll('#mainContent section').forEach(section => {
+        section.classList.add('hidden');
+      });
       document.getElementById(id).classList.remove('hidden');
     }
+
+    // Show the first section by default
+    window.onload = () => showSection('members');
   </script>
 </body>
 </html>

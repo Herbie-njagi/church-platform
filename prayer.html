@@ -7,93 +7,80 @@
   <link rel="stylesheet" href="style.css">
   <style>
     body {
-      margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f4f9ff;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
       color: #333;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
     }
 
-    header {
-      background-color: #007BFF;
-      color: white;
+    header, footer {
+      background-color: #4a148c;
+      color: #fff;
+      padding: 20px;
       text-align: center;
-      padding: 2rem 1rem;
     }
 
-    header h1 {
-      margin: 0 0 0.5rem;
-    }
-
-    .form-section {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem 1rem;
-    }
-
-    form {
-      background-color: white;
-      padding: 2rem;
+    .form-section, .instructions, .testimonies {
+      padding: 20px;
+      margin: 0 auto;
+      max-width: 800px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 123, 255, 0.1);
-      max-width: 600px;
-      width: 100%;
-    }
-
-    label {
-      font-weight: 600;
     }
 
     input, textarea {
       width: 100%;
-      padding: 0.75rem;
-      margin-top: 0.25rem;
-      margin-bottom: 1.25rem;
+      padding: 12px;
+      margin-top: 8px;
+      margin-bottom: 16px;
       border: 1px solid #ccc;
       border-radius: 5px;
-      font-size: 1rem;
+      box-sizing: border-box;
+      font-size: 16px;
     }
 
     button {
-      background-color: #007BFF;
+      background-color: #4a148c;
       color: white;
+      padding: 14px 20px;
       border: none;
-      padding: 0.75rem 1.5rem;
       border-radius: 5px;
-      font-size: 1rem;
       cursor: pointer;
-      transition: background 0.3s;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
     }
 
     button:hover {
-      background-color: #0056b3;
+      background-color: #6a1b9a;
     }
 
-    footer {
-      text-align: center;
-      background-color: #eaf4ff;
-      padding: 1rem;
-      font-size: 0.9rem;
+    .testimony-card {
+      background-color: #f3e5f5;
+      padding: 15px;
+      margin-top: 10px;
+      border-left: 4px solid #4a148c;
+      border-radius: 6px;
+      animation: fadeIn 1s ease-in;
     }
 
-    /* Responsive tweaks */
-    @media (max-width: 600px) {
-      form {
-        padding: 1.5rem 1rem;
-      }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
+    @media screen and (max-width: 600px) {
       header h1 {
         font-size: 1.5rem;
       }
-
-      input, textarea {
-        font-size: 0.95rem;
+      .form-section, .instructions, .testimonies {
+        padding: 15px;
       }
-
+      input, textarea {
+        font-size: 14px;
+      }
       button {
         width: 100%;
       }
@@ -119,6 +106,25 @@
 
       <button type="submit">Submit Prayer</button>
     </form>
+  </section>
+
+  <section class="instructions">
+    <h2>Prayer Submission Guidelines</h2>
+    <ul>
+      <li>Keep your prayer request respectful and clear.</li>
+      <li>You can remain anonymous by leaving out your name and email.</li>
+      <li>Prayer requests are reviewed daily by the church prayer team.</li>
+    </ul>
+  </section>
+
+  <section class="testimonies">
+    <h2>Testimonies from Answered Prayers</h2>
+    <div class="testimony-card">
+      <p><strong>Mary A.:</strong> "I submitted a prayer request about my job interview and within days I got the job! God is good!"</p>
+    </div>
+    <div class="testimony-card">
+      <p><strong>James K.:</strong> "Our family found peace after a long struggle. The prayer team has truly been a blessing."</p>
+    </div>
   </section>
 
   <footer>

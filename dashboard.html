@@ -15,9 +15,12 @@
       font-family: 'Roboto', sans-serif;
     }
     body {
-      background: linear-gradient(to right, #e3f2fd, #ffffff);
+      background: linear-gradient(135deg, #d7e1ec 0%, #f4f7fa 50%, #e3f2fd 100%);
+      background-attachment: fixed;
       color: #333;
       padding: 20px;
+      min-height: 100vh;
+      background-size: cover;
     }
     h1 {
       font-size: 2.5rem;
@@ -37,11 +40,12 @@
       box-shadow: 0 8px 16px rgba(0,0,0,0.1);
       padding: 30px;
       width: 300px;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       animation: scaleUp 1s ease;
     }
     .card:hover {
       transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
     }
     .card h2 {
       font-size: 1.5rem;

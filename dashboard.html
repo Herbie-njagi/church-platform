@@ -4,58 +4,102 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Church Connect Platform</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+    body {
+      background: linear-gradient(to right, #e3f2fd, #ffffff);
+      color: #333;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 40px;
+      animation: fadeIn 2s ease;
+    }
+    .dashboard-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      padding: 30px;
+      width: 300px;
+      transition: transform 0.3s ease;
+      animation: scaleUp 1s ease;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+    }
+    .card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+    .card a {
+      display: inline-block;
+      background: #1976d2;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+    .card a:hover {
+      background: #004ba0;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scaleUp {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
 </head>
-<body class="bg-gray-100">
-  <header class="bg-indigo-600 text-white p-4 shadow-md">
-    <h1 class="text-2xl font-bold text-center">Church Connect Dashboard</h1>
-  </header>
+<body>
+  <h1 id="mainTitle"></h1>
 
-  <main class="max-w-7xl mx-auto py-10 px-6">
-    <section class="mb-10">
-      <h2 class="text-xl font-semibold mb-4">Choose Your Role</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Developer Dashboard Card -->
-        <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition duration-300">
-          <h3 class="text-lg font-bold text-indigo-700">Developer (Super Admin)</h3>
-          <ul class="mt-4 text-sm text-gray-700 space-y-2">
-            <li>- Manage all churches</li>
-            <li>- View usage analytics</li>
-            <li>- Platform-wide broadcast</li>
-            <li>- View all member records</li>
-            <li>- Delete/modify church access</li>
-          </ul>
-          <button class="mt-4 bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Go to Developer Dashboard</button>
-        </div>
+  <div class="dashboard-container">
+    <div class="card">
+      <h2>Developer Dashboard</h2>
+      <p>Manage platform-wide settings, user privileges, performance, and backups.</p>
+      <a href="login.html?role=developer">Login as Developer</a>
+    </div>
+    <div class="card">
+      <h2>Church Admin Dashboard</h2>
+      <p>View member list, manage chats, upload sermons, issue certificates, and schedule meetings.</p>
+      <a href="login.html?role=admin">Login as Church Admin</a>
+    </div>
+    <div class="card">
+      <h2>Member Dashboard</h2>
+      <p>Join Bible classes, view sermons, chat with others, and request certificates.</p>
+      <a href="login.html?role=member">Login as Member</a>
+    </div>
+  </div>
 
-        <!-- Church Admin Dashboard Card -->
-        <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition duration-300">
-          <h3 class="text-lg font-bold text-green-700">Church Admin</h3>
-          <ul class="mt-4 text-sm text-gray-700 space-y-2">
-            <li>- Manage church members</li>
-            <li>- View and respond to chats</li>
-            <li>- Remove inactive members</li>
-            <li>- Upload sermons (YouTube links)</li>
-            <li>- Schedule Google Meet / Zoom sessions</li>
-          </ul>
-          <button class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Go to Church Admin Dashboard</button>
-        </div>
-
-        <!-- Member Dashboard Card -->
-        <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition duration-300">
-          <h3 class="text-lg font-bold text-blue-700">Member</h3>
-          <ul class="mt-4 text-sm text-gray-700 space-y-2">
-            <li>- Join classes from Genesis to Revelation</li>
-            <li>- Submit prayer requests</li>
-            <li>- View issued certificates</li>
-            <li>- Chat with other members</li>
-            <li>- Join online fellowships & classes</li>
-          </ul>
-          <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Go to Member Dashboard</button>
-        </div>
-      </div>
-    </section>
-  </main>
+  <script>
+    const typed = new Typed("#mainTitle", {
+      strings: ["Welcome to Church Connect Platform"],
+      typeSpeed: 60,
+      showCursor: false
+    });
+  </script>
 </body>
 </html>

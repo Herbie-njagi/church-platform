@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Auth Page</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #f8bbd0, #fce4ec);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .auth-container {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 450px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #c2185b;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.3rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 1.5rem;
+      padding: 0.7rem;
+      background-color: #c2185b;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ad1457;
+    }
+
+    .toggle {
+      text-align: center;
+      margin-top: 1rem;
+      color: #333;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <h2 id="formTitle">Login</h2>
+
+    <form id="authForm">
+      <div id="registerFields" style="display: none;">
+        <label for="username">Username:</label>
+        <input type="text" id="username" />
+
+        <label for="verifyEmail">Email Verification Code:</label>
+        <input type="text" id="verifyEmail" placeholder="Check your email for code" />
+      </div>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required />
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" required />
+
+      <div id="roleSelect" style="display: none;">
+        <label for="role">Select Role:</label>
+        <select id="role">
+          <option value="">-- Select Role --</option>
+          <option value="developer">Developer (Super Admin)</option>
+          <option value="admin">Church Admin</option>
+          <option value="member">Member</option>
+        </select>
+      </div>
+
+      <label><input type="checkbox" id="rememberMe" /> Remember Me</label>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <div class="toggle" onclick="toggleForm()">
+      Don't have an account? Register here
+    </div>
+  </div>
+
+  <script>
+    let isRegistering = false;
+
+    function toggleForm() {
+      isRegistering = !isRegistering;
+      document.getElementById('formTitle').innerText = isRegistering ? 'Register' : 'Login';
+      document.getElementById('registerFields').style.display = isRegistering ? 'block' : 'none';
+      document.getElementById('roleSelect').style.display = isRegistering ? 'block' : 'none';
+      document.querySelector('.toggle').innerText = isRegistering
+        ? 'Already have an account? Login here'
+        : "Don't have an account? Register here";
+    }
+
+    document.getElementById("authForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const rememberMe = document.getElementById("rememberMe").checked;
+
+      if (isRegistering) {
+        const username = document.getElementById("username").value;
+        const role = document.getElementById("role").value;
+        const verifyCode = document.getElementById("verifyEmail").value;
+
+        if (!role) return alert("Please select a role");
+        if (!verifyCode || verifyCode !== "123456") return alert("Invalid verification code");
+
+        if (role === "developer") {
+          window.location.href = "developer-dashboard.html";
+        } else if (role === "admin") {
+          window.location.href = "church-dashboard.html";
+        } else if (role === "member") {
+          window.location.href = "member-dashboard.html";
+        }
+      } else {
+        const role = prompt("Please enter your role (developer/admin/member):");
+        if (!role) return alert("Role required to redirect");
+
+        if (role === "developer") {
+          window.location.href = "developer-dashboard.html";
+        } else if (role === "admin") {
+          window.location.href = "church-dashboard.html";
+        } else if (role === "member") {
+          window.location.href = "member-dashboard.html";
+        } else {
+          alert("Unknown role");
+        }
+      }
+    });
+  </script>
+</body>
+</html>

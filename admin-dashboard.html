@@ -1,228 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Church Admin Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Church Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
 
-    body {
-      background: linear-gradient(to bottom right, #f3f4f6, #e5e7eb);
-      color: #111827;
-    }
+        body {
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            color: #333;
+            display: flex;
+        }
 
-    header {
-      background: #1f2937;
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        aside {
+            width: 250px;
+            background-color: #1e3a8a;
+            color: white;
+            height: 100vh;
+            padding: 20px;
+            position: fixed;
+        }
 
-    header h1 {
-      font-size: 1.5rem;
-    }
+        aside h2 {
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 1.5rem;
-      font-weight: 500;
-    }
+        aside ul {
+            list-style: none;
+        }
 
-    .dashboard-container {
-      display: grid;
-      grid-template-columns: 240px 1fr;
-      height: calc(100vh - 72px);
-    }
+        aside ul li {
+            margin: 20px 0;
+        }
 
-    .sidebar {
-      background-color: #374151;
-      padding: 1rem;
-      color: white;
-    }
+        aside ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+        }
 
-    .sidebar h2 {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-    }
+        aside ul li a i {
+            margin-right: 10px;
+        }
 
-    .sidebar a {
-      display: block;
-      margin: 1rem 0;
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-    }
+        main {
+            margin-left: 260px;
+            padding: 30px;
+            flex-grow: 1;
+        }
 
-    .sidebar a:hover {
-      background: #4b5563;
-      padding: 0.5rem;
-      border-radius: 8px;
-    }
+        .header {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
 
-    .main {
-      padding: 2rem;
-      overflow-y: auto;
-    }
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
 
-    .card {
-      background-color: white;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-      margin-bottom: 2rem;
-      animation: fadeIn 0.6s ease-in-out;
-    }
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease-in-out;
+        }
 
-    .card h3 {
-      margin-bottom: 1rem;
-      font-size: 1.2rem;
-      color: #1f2937;
-    }
+        .card:hover {
+            transform: translateY(-5px);
+        }
 
-    .card button {
-      background-color: #3b82f6;
-      color: white;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 500;
-    }
+        .card h3 {
+            margin-bottom: 10px;
+            color: #1e3a8a;
+        }
 
-    .card button:hover {
-      background-color: #2563eb;
-    }
+        .card p {
+            color: #555;
+        }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-    }
+        .logout {
+            margin-top: 30px;
+            text-align: center;
+        }
 
-    th, td {
-      text-align: left;
-      padding: 0.75rem;
-      border-bottom: 1px solid #e5e7eb;
-    }
+        .logout a {
+            color: #fff;
+            text-decoration: underline;
+        }
 
-    th {
-      background-color: #f9fafb;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .dashboard-container {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        display: none;
-      }
-
-      .main {
-        padding: 1rem;
-      }
-
-      nav a {
-        margin-left: 1rem;
-        font-size: 0.9rem;
-      }
-    }
-  </style>
+        @media (max-width: 768px) {
+            aside {
+                display: none;
+            }
+            main {
+                margin: 0;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <header>
-    <h1>Church Admin Dashboard</h1>
-    <nav>
-      <a href="#">Profile</a>
-      <a href="#">Logout</a>
-    </nav>
-  </header>
-
-  <div class="dashboard-container">
-    <aside class="sidebar">
-      <h2>Menu</h2>
-      <a href="#members">View Members</a>
-      <a href="#chats">View Chats</a>
-      <a href="#sermons">Upload Sermons</a>
-      <a href="#meetings">Manage Meetings</a>
+    <aside>
+        <h2>Church Admin</h2>
+        <ul>
+            <li><a href="#"><i class="fas fa-users"></i> Members</a></li>
+            <li><a href="#"><i class="fas fa-comments"></i> Chats</a></li>
+            <li><a href="#"><i class="fas fa-user-times"></i> Remove Member</a></li>
+            <li><a href="#"><i class="fas fa-video"></i> Upload Sermons</a></li>
+            <li><a href="#"><i class="fas fa-bible"></i> Bible Classes</a></li>
+            <li><a href="#"><i class="fas fa-certificate"></i> Certificates</a></li>
+            <li><a href="#"><i class="fas fa-calendar"></i> Meetings</a></li>
+        </ul>
+        <div class="logout">
+            <a href="login.html">Logout</a>
+        </div>
     </aside>
 
-    <main class="main">
-      <section class="card" id="members">
-        <h3>Registered Members</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Full Name</th>
-              <th>Email</th>
-              <th>Joined</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody id="memberTable">
-            <tr>
-              <td>Jane Doe</td>
-              <td>jane@example.com</td>
-              <td>July 20, 2025</td>
-              <td><button onclick="removeMember(this)">Remove</button></td>
-            </tr>
-            <!-- Add more rows dynamically -->
-          </tbody>
-        </table>
-      </section>
-
-      <section class="card" id="chats">
-        <h3>Public Chats</h3>
-        <div style="max-height: 200px; overflow-y: auto; border: 1px solid #e5e7eb; padding: 1rem; border-radius: 8px;">
-          <p><strong>John:</strong> Today’s lesson was so uplifting!</p>
-          <p><strong>Sarah:</strong> Looking forward to next week's sermon!</p>
-          <!-- More chats -->
+    <main>
+        <div class="header">Welcome, Church Admin</div>
+        <div class="card-container">
+            <div class="card">
+                <h3>Registered Members</h3>
+                <p>View and manage all church members.</p>
+            </div>
+            <div class="card">
+                <h3>Chats</h3>
+                <p>View public conversations between members.</p>
+            </div>
+            <div class="card">
+                <h3>Remove Members</h3>
+                <p>Remove members who are no longer active.</p>
+            </div>
+            <div class="card">
+                <h3>Sermon Uploads</h3>
+                <p>Paste YouTube links to share sermons.</p>
+            </div>
+            <div class="card">
+                <h3>Bible Classes</h3>
+                <p>Manage classes from Genesis to Revelation.</p>
+            </div>
+            <div class="card">
+                <h3>Certificates</h3>
+                <p>View certificates issued to members.</p>
+            </div>
+            <div class="card">
+                <h3>Meetings</h3>
+                <p>Schedule sessions via Google Meet or Zoom.</p>
+            </div>
         </div>
-      </section>
-
-      <section class="card" id="sermons">
-        <h3>Upload Sermon (YouTube Link)</h3>
-        <input type="text" placeholder="Paste YouTube link here..." style="width: 100%; padding: 0.5rem; border-radius: 8px; border: 1px solid #ccc;" />
-        <button style="margin-top: 1rem;">Upload</button>
-      </section>
-
-      <section class="card" id="meetings">
-        <h3>Set Meeting Link</h3>
-        <input type="text" placeholder="Google Meet / Zoom Link..." style="width: 100%; padding: 0.5rem; border-radius: 8px; border: 1px solid #ccc;" />
-        <button style="margin-top: 1rem;">Update Meeting</button>
-      </section>
     </main>
-  </div>
-
-  <script>
-    function removeMember(button) {
-      const row = button.closest('tr');
-      row.remove();
-      alert("Member removed successfully.");
-    }
-  </script>
 </body>
 </html>

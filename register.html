@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register - Church Connect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #8e2de2, #4a00e0);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 450px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.6rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+
+    .form-group.remember {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn {
+      background-color: #4a00e0;
+      color: #fff;
+      border: none;
+      width: 100%;
+      padding: 0.7rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #3a00b3;
+    }
+
+    .link-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+    }
+
+    .link-group a {
+      color: #4a00e0;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .link-group a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Create Your Account</h2>
+  <form id="registerForm">
+    <div class="form-group">
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" required />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" required />
+    </div>
+
+    <div class="form-group">
+      <label for="role">Register as:</label>
+      <select id="role" required>
+        <option value="">-- Select Role --</option>
+        <option value="member">Member</option>
+        <option value="admin">Church Admin</option>
+        <option value="developer">Developer</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" required />
+    </div>
+
+    <div class="form-group remember">
+      <input type="checkbox" id="remember" />
+      <label for="remember">Remember me</label>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn">Register</button>
+    </div>
+
+    <div class="link-group">
+      <a href="#" onclick="alert('Reset instructions sent to your email.')">Forgot password?</a>
+      <a href="login.html">Already have an account?</a>
+    </div>
+  </form>
+</div>
+
+<script>
+  document.getElementById("registerForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const role = document.getElementById("role").value;
+
+    // Simulate email verification (for now just an alert)
+    alert("A verification link has been sent to your email.");
+
+    if (role === "developer") {
+      window.location.href = "developer-dashboard.html";
+    } else if (role === "admin") {
+      window.location.href = "church-admin-dashboard.html";
+    } else if (role === "member") {
+      window.location.href = "member-dashboard.html";
+    } else {
+      alert("Please select a valid role.");
+    }
+  });
+</script>
+
+</body>
+</html>

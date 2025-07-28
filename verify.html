@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Email Verification</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-green-500 to-teal-600 min-h-screen flex items-center justify-center p-6">
+
+  <div class="bg-white rounded-2xl p-8 max-w-md w-full shadow-xl text-center space-y-6">
+    <h2 class="text-2xl font-bold text-green-700">Email Verification</h2>
+    <p class="text-gray-700">Click below to verify your email and continue to your dashboard.</p>
+    
+    <button onclick="verifyUser()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg">
+      Verify Email
+    </button>
+  </div>
+
+  <script>
+    function verifyUser() {
+      const user = JSON.parse(localStorage.getItem("pendingUser"));
+
+      if (!user) {
+        alert("No user to verify!");
+        return;
+      }
+
+      user.verified = true;
+      localStorage.setItem("loggedInUser", JSON.stringify(user));
+      localStorage.removeItem("pendingUser");
+
+      // Redirect to the correct dashboard
+      if (user.role === "developer") {
+        window.location.href = "developer-dashboard.html";
+      } else if (user.role === "admin") {
+        window.location.href = "church-admin-dashboard.html";
+      } else if (user.role === "member") {
+        window.location.href = "member-dashboard.html";
+      } else {
+        alert("Unknown role.");
+      }
+    }
+  </script>
+</body>
+</html>

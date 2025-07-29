@@ -1,158 +1,116 @@
+<!-- developer.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Developer Dashboard</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    body {
-      display: flex;
-      min-height: 100vh;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: #fff;
-    }
-    aside {
-      width: 240px;
-      background-color: #1c1f2b;
-      padding: 30px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
-      animation: slideInLeft 0.5s ease;
-    }
-    aside h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 1.5rem;
-      color: #00e6e6;
-    }
-    aside a {
-      color: #ccc;
-      text-decoration: none;
-      padding: 12px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: background 0.3s, color 0.3s;
-    }
-    aside a:hover {
-      background: #00e6e6;
-      color: #000;
-    }
-    main {
-      flex: 1;
-      padding: 30px;
-      animation: fadeIn 1s ease;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    header h1 {
-      font-size: 2rem;
-    }
-    .card-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-    .card {
-      background-color: #2e3b4e;
-      padding: 20px;
-      border-radius: 12px;
-      transition: transform 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    .card h3 {
-      color: #00e6e6;
-      margin-bottom: 10px;
-    }
-    .card p {
-      font-size: 0.9rem;
-      color: #ccc;
-    }
-    footer {
-      margin-top: 40px;
-      text-align: center;
-      font-size: 0.8rem;
-      color: #999;
-    }
-
-    @keyframes slideInLeft {
-      from {
-        transform: translateX(-200px);
-        opacity: 0;
-      }
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(15px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <aside>
-    <h2><i class="fas fa-user-cog"></i> Developer</h2>
-    <a href="#"><i class="fas fa-church"></i> View Churches</a>
-    <a href="#"><i class="fas fa-users-cog"></i> Manage Admins</a>
-    <a href="#"><i class="fas fa-chart-line"></i> Analytics</a>
-    <a href="#"><i class="fas fa-cogs"></i> Platform Settings</a>
-    <a href="#"><i class="fas fa-envelope"></i> Admin Messages</a>
-    <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
-  </aside>
+<body class="bg-gray-100 min-h-screen">
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-black text-white h-screen p-6">
+      <h2 class="text-2xl font-bold mb-6">Super Admin</h2>
+      <ul class="space-y-4">
+        <li><button onclick="showSection('churches')" class="hover:text-yellow-400">Churches</button></li>
+        <li><button onclick="showSection('analytics')" class="hover:text-yellow-400">Analytics</button></li>
+        <li><button onclick="showSection('reports')" class="hover:text-yellow-400">Reports</button></li>
+        <li><button onclick="showSection('requests')" class="hover:text-yellow-400">Access Requests</button></li>
+        <li><button onclick="showSection('platformSettings')" class="hover:text-yellow-400">Platform Settings</button></li>
+      </ul>
+    </aside>
 
-  <main>
-    <header>
-      <h1>Welcome, Developer</h1>
-      <div><i class="fas fa-bell"></i></div>
-    </header>
+    <!-- Main Content -->
+    <main class="flex-1 p-10 space-y-10" id="mainContent">
+      
+      <!-- Registered Churches -->
+      <section id="churches">
+        <h2 class="text-2xl font-bold text-blue-800 mb-4">Registered Churches</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white p-4 rounded shadow hover:shadow-lg transition">
+            <h3 class="font-semibold text-gray-700">ShachahWave Church</h3>
+            <p class="text-sm text-gray-500">Meru, Kenya</p>
+            <button class="mt-2 bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 text-sm">Remove</button>
+          </div>
+          <div class="bg-white p-4 rounded shadow hover:shadow-lg transition">
+            <h3 class="font-semibold text-gray-700">Divine Grace Assembly</h3>
+            <p class="text-sm text-gray-500">Nairobi, Kenya</p>
+            <button class="mt-2 bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 text-sm">Remove</button>
+          </div>
+        </div>
+      </section>
 
-    <div class="card-container">
-      <div class="card">
-        <h3>Total Churches</h3>
-        <p>Currently 25 registered churches using the platform.</p>
-      </div>
-      <div class="card">
-        <h3>Platform Users</h3>
-        <p>Over 2,300 active members across all churches.</p>
-      </div>
-      <div class="card">
-        <h3>Issues Reported</h3>
-        <p>5 open tickets pending review from church admins.</p>
-      </div>
-      <div class="card">
-        <h3>Recent Activity</h3>
-        <p>3 new churches registered this week.</p>
-      </div>
-    </div>
+      <!-- Analytics -->
+      <section id="analytics" class="hidden">
+        <h2 class="text-2xl font-bold text-blue-800 mb-4">Platform Analytics</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="bg-white p-6 rounded shadow">
+            <h3 class="text-gray-700 font-semibold">Total Churches</h3>
+            <p class="text-xl text-blue-700 font-bold">32</p>
+          </div>
+          <div class="bg-white p-6 rounded shadow">
+            <h3 class="text-gray-700 font-semibold">Active Members</h3>
+            <p class="text-xl text-blue-700 font-bold">1,520</p>
+          </div>
+          <div class="bg-white p-6 rounded shadow">
+            <h3 class="text-gray-700 font-semibold">Certificates Issued</h3>
+            <p class="text-xl text-blue-700 font-bold">984</p>
+          </div>
+          <div class="bg-white p-6 rounded shadow">
+            <h3 class="text-gray-700 font-semibold">Sermons Uploaded</h3>
+            <p class="text-xl text-blue-700 font-bold">174</p>
+          </div>
+        </div>
+      </section>
 
-    <footer>
-      &copy; 2025 Church Connect Platform — Developer Console
-    </footer>
-  </main>
+      <!-- Reports -->
+      <section id="reports" class="hidden">
+        <h2 class="text-2xl font-bold text-blue-800 mb-4">Reported Content</h2>
+        <div class="bg-white p-6 rounded shadow space-y-3">
+          <p><strong class="text-red-600">John Doe:</strong> Reported inappropriate message in chat - “...You’re all wrong...”</p>
+          <p><strong class="text-red-600">Grace W.:</strong> Reported broken YouTube link</p>
+        </div>
+      </section>
+
+      <!-- Access Requests -->
+      <section id="requests" class="hidden">
+        <h2 class="text-2xl font-bold text-blue-800 mb-4">Access Requests</h2>
+        <div class="bg-white p-6 rounded shadow space-y-4">
+          <div>
+            <p><strong>Agape Ministries</strong> - <em>Nakuru, Kenya</em></p>
+            <button class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 mr-2">Approve</button>
+            <button class="bg-gray-500 text-white px-3 py-1 rounded hover:bg-gray-600">Reject</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Platform Settings -->
+      <section id="platformSettings" class="hidden">
+        <h2 class="text-2xl font-bold text-blue-800 mb-4">Platform Settings</h2>
+        <div class="bg-white p-6 rounded shadow space-y-4">
+          <label class="block">
+            <span class="text-gray-700">System Maintenance Mode</span>
+            <select class="mt-1 block w-full border-gray-300 rounded-md">
+              <option>Off</option>
+              <option>On</option>
+            </select>
+          </label>
+          <label class="block">
+            <span class="text-gray-700">Allow New Church Registrations</span>
+            <input type="checkbox" class="ml-2" checked />
+          </label>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll('#mainContent section');
+      sections.forEach(s => s.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+    }
+  </script>
 </body>
 </html>

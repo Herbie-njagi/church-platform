@@ -90,7 +90,7 @@
         <select id="role">
           <option value="">-- Select Role --</option>
           <option value="developer">Developer (Super Admin)</option>
-          <option value="admin">Church Admin</option>
+          <option value="admin">Admin</option>
           <option value="member">Member</option>
         </select>
       </div>
@@ -136,7 +136,7 @@
         if (role === "developer") {
           window.location.href = "developer-dashboard.html";
         } else if (role === "admin") {
-          window.location.href = "church-dashboard.html";
+          window.location.href = "admin-dashboard.html";
         } else if (role === "member") {
           window.location.href = "member-dashboard.html";
         }

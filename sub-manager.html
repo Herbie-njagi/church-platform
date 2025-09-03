@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sub-Manager Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans">
+  <div class="flex">
+    <!-- Sidebar -->
+    <div class="w-64 bg-green-900 text-white min-h-screen p-5 shadow-2xl">
+      <h2 class="text-2xl font-extrabold mb-8 tracking-wide">Sub-Manager</h2>
+      <ul class="space-y-4">
+        <li><button onclick="showSection('trackChurches')" class="hover:text-yellow-300">Track Churches</button></li>
+        <li><button onclick="showSection('programs')" class="hover:text-yellow-300">Programs Progress</button></li>
+        <li><button onclick="showSection('reports')" class="hover:text-yellow-300">Reports</button></li>
+        <li><button onclick="showSection('settings')" class="hover:text-yellow-300">Settings</button></li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-10 space-y-10" id="mainContent">
+      <!-- Track Churches -->
+      <section id="trackChurches" class="hidden">
+        <h2 class="text-3xl font-bold text-green-800 mb-6">Track Overseen Churches</h2>
+        <div class="bg-white shadow-lg rounded-xl p-6">
+          <ul class="list-disc ml-6 text-gray-700">
+            <li>Church A - 120 members</li>
+            <li>Church B - 85 members</li>
+            <li>Church C - 60 members</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Programs Progress -->
+      <section id="programs" class="hidden">
+        <h2 class="text-3xl font-bold text-green-800 mb-6">Programs Progress</h2>
+        <div class="bg-white shadow-lg rounded-xl p-6">
+          <p class="text-gray-700">Track discipleship, Bible study, and baptism classes progress.</p>
+        </div>
+      </section>
+
+      <!-- Reports -->
+      <section id="reports" class="hidden">
+        <h2 class="text-3xl font-bold text-green-800 mb-6">Reports</h2>
+        <div class="bg-white shadow-lg rounded-xl p-6">
+          <p class="text-gray-700">Generate progress and attendance reports for each church.</p>
+        </div>
+      </section>
+
+      <!-- Settings -->
+      <section id="settings" class="hidden">
+        <h2 class="text-3xl font-bold text-green-800 mb-6">Settings</h2>
+        <div class="bg-white shadow-lg rounded-xl p-6">
+          <p class="text-gray-700">Update your overseer account preferences and alerts.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll('#mainContent section');
+      sections.forEach(sec => sec.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>

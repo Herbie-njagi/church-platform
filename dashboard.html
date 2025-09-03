@@ -3,119 +3,162 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Church Connect Platform</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Roboto', sans-serif;
-    }
-    body {
-  background: 
-    radial-gradient(circle at top center, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0)) no-repeat,
-    linear-gradient(135deg, #d7e1ec 0%, #f4f7fa 50%, #e3f2fd 100%),
-    url('https://images.unsplash.com/photo-1496309732348-3627f3f040ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-  background-blend-mode: overlay, overlay, multiply;
-  background-size: cover;
-  background-attachment: fixed;
-  color: #333;
-  padding: 20px;
-  min-height: 100vh;
-  animation: fadeBg 20s infinite alternate;
-}
+  <title>Unified Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind animation config
+    tailwind.config = {
+      theme: {
+        extend: {
+          animation: {
+            fadeInUp: 'fadeInUp 0.6s ease-out',
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+          },
+        },
+      },
+    };
 
-    @keyframes fadeBg {
-      0% { filter: brightness(1) saturate(1); }
-      100% { filter: brightness(1.1) saturate(1.3); }
+    // Simulated user role (this would come from login/registration)
+    let userRole = localStorage.getItem("role") || "member"; 
+    // Possible values: superadmin, manager, submanager, stationadmin, member
+
+    function loadDashboard() {
+      document.querySelectorAll(".role-section").forEach(sec => sec.classList.add("hidden"));
+      document.querySelectorAll(`.role-${userRole}`).forEach(sec => sec.classList.remove("hidden"));
+      document.getElementById("roleTitle").innerText = userRole.charAt(0).toUpperCase() + userRole.slice(1);
     }
-    h1 {
-      font-size: 2.5rem;
-      text-align: center;
-      margin-bottom: 40px;
-      animation: fadeIn 2s ease;
-      color: #fff;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+
+    function showSection(id) {
+      document.querySelectorAll('#mainContent section').forEach(sec => sec.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
     }
-    .dashboard-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-    .card {
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-      padding: 30px;
-      width: 300px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: scaleUp 1s ease;
-    }
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
-    }
-    .card h2 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-    }
-    .card p {
-      font-size: 1rem;
-      margin-bottom: 15px;
-    }
-    .card a {
-      display: inline-block;
-      background: #1976d2;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: background 0.3s;
-    }
-    .card a:hover {
-      background: #004ba0;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes scaleUp {
-      0% { transform: scale(0.8); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-  </style>
+
+    window.onload = loadDashboard;
+  </script>
 </head>
-<body>
-  <h1 id="mainTitle"></h1>
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans">
+  <div class="flex">
+    <!-- Sidebar -->
+    <div class="w-64 bg-blue-900 text-white min-h-screen p-5 shadow-2xl">
+      <h2 class="text-2xl font-extrabold mb-8 tracking-wide">Dashboard: <span id="roleTitle"></span></h2>
 
-  <div class="dashboard-container">
-    <div class="card">
-      <h2>Developer Dashboard</h2>
-      <p>Manage platform-wide settings, user privileges, performance, and backups.</p>
-      <a href="login.html?role=developer">Login as Developer</a>
+      <!-- Super Admin Sidebar -->
+      <ul class="space-y-4 role-section role-superadmin hidden">
+        <li><button onclick="showSection('managers')" class="hover:text-yellow-300">Managers</button></li>
+        <li><button onclick="showSection('reports')" class="hover:text-yellow-300">Reports</button></li>
+        <li><button onclick="showSection('settings')" class="hover:text-yellow-300">System Settings</button></li>
+      </ul>
+
+      <!-- Manager Sidebar -->
+      <ul class="space-y-4 role-section role-manager hidden">
+        <li><button onclick="showSection('overseers')" class="hover:text-yellow-300">Overseers</button></li>
+        <li><button onclick="showSection('churches')" class="hover:text-yellow-300">Churches</button></li>
+        <li><button onclick="showSection('reports')" class="hover:text-yellow-300">Reports</button></li>
+      </ul>
+
+      <!-- Sub-Manager Sidebar -->
+      <ul class="space-y-4 role-section role-submanager hidden">
+        <li><button onclick="showSection('stations')" class="hover:text-yellow-300">Stations</button></li>
+        <li><button onclick="showSection('progress')" class="hover:text-yellow-300">Program Progress</button></li>
+        <li><button onclick="showSection('reports')" class="hover:text-yellow-300">Reports</button></li>
+      </ul>
+
+      <!-- Station Admin Sidebar -->
+      <ul class="space-y-4 role-section role-stationadmin hidden">
+        <li><button onclick="showSection('members')" class="hover:text-yellow-300">Members</button></li>
+        <li><button onclick="showSection('classes')" class="hover:text-yellow-300">Bible Classes</button></li>
+        <li><button onclick="showSection('certificates')" class="hover:text-yellow-300">Certificates</button></li>
+        <li><button onclick="showSection('sermons')" class="hover:text-yellow-300">Sermons</button></li>
+        <li><button onclick="showSection('prayers')" class="hover:text-yellow-300">Prayer Requests</button></li>
+      </ul>
+
+      <!-- Member Sidebar -->
+      <ul class="space-y-4 role-section role-member hidden">
+        <li><button onclick="showSection('myClasses')" class="hover:text-yellow-300">My Classes</button></li>
+        <li><button onclick="showSection('tests')" class="hover:text-yellow-300">Tests</button></li>
+        <li><button onclick="showSection('prayers')" class="hover:text-yellow-300">Prayer Requests</button></li>
+        <li><button onclick="showSection('certificates')" class="hover:text-yellow-300">Certificates</button></li>
+        <li><button onclick="showSection('meetings')" class="hover:text-yellow-300">Meetings</button></li>
+      </ul>
     </div>
-    <div class="card">
-      <h2>Church Admin Dashboard</h2>
-      <p>View member list, manage chats, upload sermons, issue certificates, and schedule meetings.</p>
-      <a href="login.html?role=admin">Login as Church Admin</a>
-    </div>
-    <div class="card">
-      <h2>Member Dashboard</h2>
-      <p>Join Bible classes, view sermons, chat with others, and request certificates.</p>
-      <a href="login.html?role=member">Login as Member</a>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-10 space-y-10" id="mainContent">
+      <!-- Super Admin Sections -->
+      <section id="managers" class="hidden role-section role-superadmin animate-fadeInUp">
+        <h2 class="text-3xl font-bold text-blue-800 mb-6">Manage Managers</h2>
+        <p class="text-gray-700">Super Admin can add/remove managers here.</p>
+      </section>
+      <section id="reports" class="hidden role-section role-superadmin role-manager role-submanager animate-fadeInUp">
+        <h2 class="text-3xl font-bold text-blue-800 mb-6">Reports</h2>
+        <p class="text-gray-700">View system-wide or church-specific reports here.</p>
+      </section>
+      <section id="settings" class="hidden role-section role-superadmin animate-fadeInUp">
+        <h2 class="text-3xl font-bold text-blue-800 mb-6">System Settings</h2>
+        <p class="text-gray-700">Configure global platform options.</p>
+      </section>
+
+      <!-- Manager Sections -->
+      <section id="overseers" class="hidden role-section role-manager animate-fadeInUp">
+        <h2 class="text-3xl font-bold text-blue-800 mb-6">Manage Overseers</h2>
+        <p class="text-gray-700">Manager registers sub-managers (overseers) here.</p>
+      </section>
+      <section id="churches" class="hidden role-section role-manager animate-fadeInUp">
+        <h2 class="text-3xl font-bold text-blue-800 mb-6">Manage Churches</h2>
+        <p class="text-gray-700">Manager registers churches and assigns them to overseers.</p>
+      </section>
+
+      <!-- Sub-Manager Sections -->
+      <section id="stations" class="hidden role-section role-submanager animate-fadeInUp">
+        <h2 class="text-3xl font-bold text-blue-800 mb-6">Stations Overview</h2>
+        <p class="text-gray-700">Overseer monitors churches under their care.</p>
+      </section>
+      <section id="progress" class="hidden role-section role-submanager animate-fadeInUp">
+        <h2 class="text-3xl font-bold text-blue-800 mb-6">Program Progress</h2>
+        <p class="text-gray-700">Track progress of programs across stations.</p>
+      </section>
+
+      <!-- Station Admin Sections -->
+      <section id="members" class="hidden role-section role-stationadmin animate-fadeInUp">
+        <h2 class="text-3xl font-bold text-blue-800 mb-6">Manage Members</h2>
+        <p class="text-gray-700">Register, view, and manage members in this church.</p>
+      </section>
+      <section id="classes" class="hidden role-section role-stationadmin animate-fadeInUp">
+        <h2 class="text-3xl font-bold text-blue-800 mb-6">Bible Classes</h2>
+        <p class="text-gray-700">Run Bible study & baptism classes.</p>
+      </section>
+      <section id="certificates" class="hidden role-section role-stationadmin role-member animate-fadeInUp">
+        <h2 class="text-3xl font-bold text-blue-800 mb-6">Certificates</h2>
+        <p class="text-gray-700">View and issue certificates.</p>
+      </section>
+      <section id="sermons" class="hidden role-section role-stationadmin animate-fadeInUp">
+        <h2 class="text-3xl font-bold text-blue-800 mb-6">Upload Sermons</h2>
+        <p class="text-gray-700">Upload announcements or sermons via YouTube link.</p>
+      </section>
+      <section id="prayers" class="hidden role-section role-stationadmin role-member animate-fadeInUp">
+        <h2 class="text-3xl font-bold text-blue-800 mb-6">Prayer Requests</h2>
+        <p class="text-gray-700">Members can submit prayer requests here.</p>
+      </section>
+
+      <!-- Member Sections -->
+      <section id="myClasses" class="hidden role-section role-member animate-fadeInUp">
+        <h2 class="text-3xl font-bold text-blue-800 mb-6">My Classes</h2>
+        <p class="text-gray-700">View and join Bible study/baptism classes.</p>
+      </section>
+      <section id="tests" class="hidden role-section role-member animate-fadeInUp">
+        <h2 class="text-3xl font-bold text-blue-800 mb-6">Tests</h2>
+        <p class="text-gray-700">Take online quizzes after classes.</p>
+      </section>
+      <section id="meetings" class="hidden role-section role-member animate-fadeInUp">
+        <h2 class="text-3xl font-bold text-blue-800 mb-6">Meetings</h2>
+        <p class="text-gray-700">Join Zoom or Google Meet for fellowship.</p>
+      </section>
     </div>
   </div>
-
-  <script>
-    const typed = new Typed("#mainTitle", {
-      strings: ["Welcome to Church Connect Platform"],
-      typeSpeed: 60,
-      showCursor: false
-    });
-  </script>
 </body>
 </html>

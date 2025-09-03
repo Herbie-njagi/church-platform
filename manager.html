@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manager Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen font-sans">
+  <div class="flex">
+    <!-- Sidebar -->
+    <div class="w-64 bg-purple-900 text-white min-h-screen p-5 shadow-2xl">
+      <h2 class="text-2xl font-extrabold mb-8 tracking-wide">Manager</h2>
+      <ul class="space-y-4">
+        <li><button onclick="showSection('registerOverseers')" class="hover:text-yellow-300">Register Overseers</button></li>
+        <li><button onclick="showSection('registerChurches')" class="hover:text-yellow-300">Register Churches</button></li>
+        <li><button onclick="showSection('reports')" class="hover:text-yellow-300">Reports</button></li>
+        <li><button onclick="showSection('settings')" class="hover:text-yellow-300">Settings</button></li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-10 space-y-10" id="mainContent">
+      <!-- Register Overseers -->
+      <section id="registerOverseers" class="hidden">
+        <h2 class="text-3xl font-bold text-purple-800 mb-6">Register Overseers</h2>
+        <form class="bg-white shadow-lg rounded-xl p-6 space-y-4">
+          <input type="text" placeholder="Full Name" class="w-full p-3 border rounded-md" />
+          <input type="email" placeholder="Email" class="w-full p-3 border rounded-md" />
+          <button class="bg-purple-700 text-white px-6 py-2 rounded-md hover:bg-purple-800">Register</button>
+        </form>
+      </section>
+
+      <!-- Register Churches -->
+      <section id="registerChurches" class="hidden">
+        <h2 class="text-3xl font-bold text-purple-800 mb-6">Register Churches</h2>
+        <form class="bg-white shadow-lg rounded-xl p-6 space-y-4">
+          <input type="text" placeholder="Church Name" class="w-full p-3 border rounded-md" />
+          <input type="text" placeholder="Location" class="w-full p-3 border rounded-md" />
+          <button class="bg-purple-700 text-white px-6 py-2 rounded-md hover:bg-purple-800">Register</button>
+        </form>
+      </section>
+
+      <!-- Reports -->
+      <section id="reports" class="hidden">
+        <h2 class="text-3xl font-bold text-purple-800 mb-6">Reports</h2>
+        <div class="bg-white shadow-lg rounded-xl p-6">
+          <p class="text-gray-700">Track registrations, programs, and growth statistics here.</p>
+        </div>
+      </section>
+
+      <!-- Settings -->
+      <section id="settings" class="hidden">
+        <h2 class="text-3xl font-bold text-purple-800 mb-6">Settings</h2>
+        <div class="bg-white shadow-lg rounded-xl p-6">
+          <p class="text-gray-700">Update your account, notifications, and access controls.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll('#mainContent section');
+      sections.forEach(sec => sec.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
